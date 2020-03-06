@@ -2,6 +2,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/task.dart';
 
+class CreateScreen extends StatefulWidget {
+  final VoidCallback onClose;
+  final ValueChanged taskChanged;
+  const CreateScreen({Key key, this.taskChanged, this.onClose}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _CreateScreenState();
+}
+
+class _CreateScreenState extends State<CreateScreen> {
+  TextEditingController _taskController;
+
+  @override
+  void initState() {
+    _taskController = TextEditingController();
+    super.initState();
+  }
+
 @override
  Widget build(BuildContext context) {
     return Column(
@@ -36,3 +54,4 @@ import 'package:todo_app/task.dart';
       ],
     );
   }
+}
