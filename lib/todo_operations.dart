@@ -17,8 +17,14 @@ class TodoListState extends State<TodoList> {
     }
   }
 
+
   Widget _buildToDoItem(String input, int index) {
-    return new ListTile(title: new Text(input), onTap: () => _promptRemoveToDo(index),);
+    return new CheckboxListTile(
+          secondary: Icon(Icons.close),
+          value: false,
+          controlAffinity: ListTileControlAffinity.leading,
+          title: new Text(input)
+    );
   }
 
   Widget _buildToDoList() {
@@ -33,7 +39,9 @@ class TodoListState extends State<TodoList> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(appBar: new AppBar(title: new Text('Check Yourself'),
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Check Yourself'),
     ),
       body: _buildToDoList(),
       floatingActionButton: new FloatingActionButton(
@@ -45,6 +53,7 @@ class TodoListState extends State<TodoList> {
   }
 
   void _pushAddToDo() {
+    print (_todoItems.toString());
     Navigator.of(context).push(
         new MaterialPageRoute(
             builder: (context) {
@@ -74,12 +83,12 @@ class TodoListState extends State<TodoList> {
   void _promptRemoveToDo(int index) {
     showDialog(context: context, builder: (BuildContext context) {
       return new AlertDialog(
-          title: new Text('Mark "${_todoItems[index]}" as done?'),
+          title: new Text('Delete "${_todoItems[index]}" ?'),
           actions: <Widget>[
             new FlatButton(onPressed: () => Navigator.of(context).pop(),
                 child: new Text ('Cancel')),
             new FlatButton(
-                child: new Text('MARK AS DONE'),
+                child: new Text('DELETE'),
                 onPressed: () {
                   _removeTodo(index);
                   Navigator.of(context).pop();
