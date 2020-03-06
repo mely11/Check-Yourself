@@ -15,7 +15,7 @@ class TodoListState extends State<TodoList> {
   void _addTodo(String task) {
     if (task.length > 0) {
       setState(() => _todoItems.add(task));
-      if (_todoItems[0] == 'Example: Do my homework!') {
+      if (_todoItems[0] == '') {
         _removeTodo(0);
       }
       FileUtils.saveToFile(_todoItems);
@@ -53,10 +53,10 @@ class TodoListState extends State<TodoList> {
         _todoItems = contents;
       });
     });
-    if (_todoItems.length < 1){
-      _todoItems = ['Example: Do my homework!'];
-      FileUtils.saveToFile(_todoItems);
-    }
+//    if (_todoItems.length == 0){
+//      _todoItems = ['Example: Do my homework!'];
+//      FileUtils.saveToFile(_todoItems);
+//    }
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Check Yourself'),
