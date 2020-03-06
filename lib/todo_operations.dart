@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'file_utils.dart';
 
 class TodoList extends StatefulWidget{
   @override
@@ -14,13 +15,21 @@ class TodoListState extends State<TodoList> {
   void _addTodo(String task) {
     if (task.length > 0) {
       setState(() => _todoItems.add(task));
+      if (_todoItems[0] == 'Example: Do my homework!') {
+        _removeTodo(0);
+      }
+      FileUtils.saveToFile(_todoItems);
     }
   }
 
 
   Widget _buildToDoItem(String input, int index) {
     return new CheckboxListTile(
-          secondary: Icon(Icons.close),
+          secondary: IconButton(
+            onPressed: () => _promptRemoveToDo(index),
+            icon: Icon(Icons.close),
+            color: Colors.red,
+          ),
           value: false,
           controlAffinity: ListTileControlAffinity.leading,
           title: new Text(input)
@@ -39,6 +48,15 @@ class TodoListState extends State<TodoList> {
 
   @override
   Widget build(BuildContext context) {
+    FileUtils.readFromFile().then((contents) {
+      setState(() {
+        _todoItems = contents;
+      });
+    });
+    if (_todoItems.length < 1){
+      _todoItems = ['Example: Do my homework!'];
+      FileUtils.saveToFile(_todoItems);
+    }
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Check Yourself'),
@@ -78,6 +96,7 @@ class TodoListState extends State<TodoList> {
 
   void _removeTodo(int index) {
     setState(() => _todoItems.removeAt(index));
+    FileUtils.saveToFile(_todoItems);
   }
 
   void _promptRemoveToDo(int index) {
