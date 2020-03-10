@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'file_utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class TodoList extends StatefulWidget{
   @override
@@ -10,18 +11,15 @@ class TodoListState extends State<TodoList> {
 //  Widget build(BuildContext context){
 //    return new Scaffold(appBar: new AppBar(title: new Text('Check Yourself')));
 //  }
+
   List<String>_todoItems = [];
 
   void _addTodo(String task) {
     if (task.length > 0) {
       setState(() => _todoItems.add(task));
-      if (_todoItems[0] == '') {
-        _removeTodo(0);
-      }
-      FileUtils.saveToFile(_todoItems);
+      _saveTodoData();
     }
   }
-
 
   Widget _buildToDoItem(String input, int index) {
     return new CheckboxListTile(
@@ -47,16 +45,12 @@ class TodoListState extends State<TodoList> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    FileUtils.readFromFile().then((contents) {
+  Widget build(BuildContext context){
+    _getTodoData().then((data){
       setState(() {
-        _todoItems = contents;
+      _todoItems = data;
       });
     });
-//    if (_todoItems.length == 0){
-//      _todoItems = ['Example: Do my homework!'];
-//      FileUtils.saveToFile(_todoItems);
-//    }
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Check Yourself'),
@@ -96,7 +90,7 @@ class TodoListState extends State<TodoList> {
 
   void _removeTodo(int index) {
     setState(() => _todoItems.removeAt(index));
-    FileUtils.saveToFile(_todoItems);
+    _saveTodoData();
   }
 
   void _promptRemoveToDo(int index) {
@@ -118,4 +112,22 @@ class TodoListState extends State<TodoList> {
     }
     );
   }
+
+  static Future<List<String>> _getTodoData() async{
+    final prefs = await SharedPreferences.getInstance();
+    final todoData = prefs.getStringList('_todoItems');
+    if (todoData == null){
+      return [];
+    }
+    else{
+      return todoData;
+    }
+  }
+
+  void _saveTodoData() async{
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setStringList('_todoItems', _todoItems);
+  }
+
+
 }
