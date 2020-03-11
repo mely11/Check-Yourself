@@ -1,4 +1,4 @@
-# todo_app
+# Habit Tracker
 
 A new Flutter application.
 
