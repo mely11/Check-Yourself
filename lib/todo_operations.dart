@@ -14,17 +14,17 @@ class TodoListState extends State<TodoList> {
 
   List<String>_todoItems = [];
 
-  void _addTodo(String task) {
+  void _addTodo(List buildList, String task) {
     if (task.length > 0) {
       setState(() => _todoItems.add(task));
       _saveTodoData();
     }
   }
 
-  Widget _buildToDoItem(String input, int index) {
+  Widget _buildToDoItem(List buildList, String input, int index) {
     return new CheckboxListTile(
           secondary: IconButton(
-            onPressed: () => _promptRemoveToDo(index),
+            onPressed: () => _promptRemoveToDo(buildList, index),
             icon: Icon(Icons.close),
             color: Colors.red,
           ),
@@ -34,11 +34,11 @@ class TodoListState extends State<TodoList> {
     );
   }
 
-  Widget _buildToDoList() {
+  Widget _buildToDoList(List buildList) {
     return new ListView.builder(
         itemBuilder: (context, index) {
-          if (index < _todoItems.length) {
-            return _buildToDoItem(_todoItems[index], index);
+          if (index < buildList.length) {
+            return _buildToDoItem(buildList, buildList[index], index);
           }
         }
     );
@@ -55,7 +55,7 @@ class TodoListState extends State<TodoList> {
       appBar: new AppBar(
         title: new Text('Check Yourself'),
     ),
-      body: _buildToDoList(),
+      body: _buildToDoList(_todoItems),
       floatingActionButton: new FloatingActionButton(
           onPressed: _pushAddToDo,
           tooltip: 'Add task',
@@ -75,7 +75,7 @@ class TodoListState extends State<TodoList> {
                   body: new TextField(
                     autofocus: true,
                     onSubmitted: (val) {
-                      _addTodo(val);
+                      _addTodo(_todoItems, val);
                       Navigator.pop(context);
                     },
                     decoration: new InputDecoration(
@@ -88,22 +88,22 @@ class TodoListState extends State<TodoList> {
     );
   }
 
-  void _removeTodo(int index) {
+  void _removeTodo(List thisList, int index) {
     setState(() => _todoItems.removeAt(index));
     _saveTodoData();
   }
 
-  void _promptRemoveToDo(int index) {
+  void _promptRemoveToDo(List thisList, int index) {
     showDialog(context: context, builder: (BuildContext context) {
       return new AlertDialog(
-          title: new Text('Delete "${_todoItems[index]}" ?'),
+          title: new Text('Delete "${thisList[index]}" ?'),
           actions: <Widget>[
             new FlatButton(onPressed: () => Navigator.of(context).pop(),
                 child: new Text ('Cancel')),
             new FlatButton(
                 child: new Text('DELETE'),
                 onPressed: () {
-                  _removeTodo(index);
+                  _removeTodo(thisList, index);
                   Navigator.of(context).pop();
                 }
             )
