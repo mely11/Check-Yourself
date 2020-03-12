@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:calendar_strip/calendar_strip.dart';
+import 'calendar.dart';
 
 
 class TodoList extends StatefulWidget{
@@ -54,8 +56,18 @@ class TodoListState extends State<TodoList> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Check Yourself'),
+      body: Container(
+          child: CalendarStrip(
+          startDate: startDate,
+          endDate: endDate,
+          onDateSelected: onSelect,
+          dateTileBuilder: dateTileBuilder,
+          iconColor: Colors.black87,
+          monthNameWidget: _monthNameWidget,
+          markedDates: markedDates,
+          containerDecoration: BoxDecoration(color: Colors.black12),
     ),
-      body: _buildToDoList(_todoItems),
+      body: _buildToDoList(_todoItems), 
       floatingActionButton: new FloatingActionButton(
           onPressed: _pushAddToDo,
           tooltip: 'Add task',
