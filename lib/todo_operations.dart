@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:calendar_strip/calendar_strip.dart';
+import 'package:todo_app/task_op.dart';
 import 'calendar.dart';
 
 
@@ -24,15 +26,27 @@ class TodoListState extends State<TodoList> {
   }
 
   Widget _buildToDoItem(List buildList, String input, int index) {
+    Color checkedColor = const Color.fromARGB(0xFF, 0x81, 0xA5, 0xF1);  // the color appears when this checkbox is checked
+    Color iconColor = const Color.fromARGB(0xFE, 0xFE, 0xFE, 0xFE); 
     return new CheckboxListTile(
+          value: timeDilation != 1.0,
+          onChanged: (bool value) {
+          setState(() { 
+              timeDilation = value ? 2.0 : 1.0;
+              }
+            );
+          },
+          activeColor: checkedColor, // the color appears when this checkbox is checked
+          checkColor: iconColor,
           secondary: IconButton(
             onPressed: () => _promptRemoveToDo(buildList, index),
             icon: Icon(Icons.close),
             color: Colors.red,
           ),
-          value: false,
+          
           controlAffinity: ListTileControlAffinity.leading,
           title: new Text(input)
+          
     );
   }
 
@@ -56,16 +70,18 @@ class TodoListState extends State<TodoList> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Check Yourself'),
-      body: Container(
-          child: CalendarStrip(
-          startDate: startDate,
-          endDate: endDate,
-          onDateSelected: onSelect,
-          dateTileBuilder: dateTileBuilder,
-          iconColor: Colors.black87,
-          monthNameWidget: _monthNameWidget,
-          markedDates: markedDates,
-          containerDecoration: BoxDecoration(color: Colors.black12),
+        // TO DO:
+        // INTEGRATE THIS CALENDAR PART INTO THE CURRENT TO DO LIST
+    //   body: Container(
+    //       child: CalendarStrip(
+    //       startDate: startDate,
+    //       endDate: endDate,
+    //       onDateSelected: onSelect,
+    //       dateTileBuilder: dateTileBuilder,
+    //       iconColor: Colors.black87,
+    //       monthNameWidget: _monthNameWidget,
+    //       markedDates: markedDates,
+    //       containerDecoration: BoxDecoration(color: Colors.black12),
     ),
       body: _buildToDoList(_todoItems), 
       floatingActionButton: new FloatingActionButton(
