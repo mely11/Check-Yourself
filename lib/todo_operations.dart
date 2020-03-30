@@ -50,6 +50,11 @@ class TodoListState extends State<TodoList> {
     );
   }
 
+    void _checkToDoItem(List thisList, int index) {
+
+
+  }
+
   Widget _buildToDoList(List buildList) {
     return new ListView.builder(
         itemBuilder: (context, index) {
@@ -116,6 +121,7 @@ class TodoListState extends State<TodoList> {
     );
   }
 
+
   void _removeTodo(List thisList, int index) {
     setState(() => _todoItems.removeAt(index));
     _saveTodoData();
@@ -141,6 +147,7 @@ class TodoListState extends State<TodoList> {
     );
   }
 
+  
   static Future<List<String>> _getTodoData() async{
     final prefs = await SharedPreferences.getInstance();
     final todoData = prefs.getStringList('_todoItems');
