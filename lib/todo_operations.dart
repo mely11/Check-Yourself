@@ -3,6 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:calendar_strip/calendar_strip.dart';
 import 'package:todo_app/task_op.dart';
+import 'package:todo_app/task.dart';
+import 'package:todo_app/todoItem.dart';
 import 'calendar.dart';
 
 
@@ -15,21 +17,23 @@ class TodoListState extends State<TodoList> {
 //  Widget build(BuildContext context){
 //    return new Scaffold(appBar: new AppBar(title: new Text('Check Yourself')));
 //  }
+  // int index = 0;
 
-  List<String>_todoItems = [];
+  List<Task>_todoItems = [];
 
   void _addTodo(List buildList, String task) {
     if (task.length > 0) {
-      setState(() => _todoItems.add(task));
-      _saveTodoData();
+      setState(() => _todoItems.add(new Task(task, false)));
+      // _saveTodoData();
     }
+    // index++;
   }
 
-  Widget _buildToDoItem(List buildList, String input, int index) {
+  Widget _buildToDoItem(List buildList, Task task, int index) {
     Color checkedColor = const Color.fromARGB(0xFF, 0x81, 0xA5, 0xF1);  // the color appears when this checkbox is checked
-    Color iconColor = const Color.fromARGB(0xFE, 0xFE, 0xFE, 0xFE); 
+    Color iconColor = const Color.fromARGB(0xFE, 0xFE, 0xFE, 0xFE); // the color of the check sign within the check box
     return new CheckboxListTile(
-          value: timeDilation != 1.0,
+          value: timeDilation = buildList[index].done,
           onChanged: (bool value) {
           setState(() { 
               timeDilation = value ? 2.0 : 1.0;
@@ -45,15 +49,15 @@ class TodoListState extends State<TodoList> {
           ),
           
           controlAffinity: ListTileControlAffinity.leading,
-          title: new Text(input)
+          title: new Text(task.name)
           
     );
   }
 
-    void _checkToDoItem(List thisList, int index) {
+  //   void _checkToDoItem(List thisList, int index) {
 
 
-  }
+  // }
 
   Widget _buildToDoList(List buildList) {
     return new ListView.builder(
@@ -67,11 +71,12 @@ class TodoListState extends State<TodoList> {
 
   @override
   Widget build(BuildContext context){
-    _getTodoData().then((data){
-      setState(() {
-      _todoItems = data;
-      });
-    });
+    // TO DO
+    // _getTodoData().then((task){
+    //   setState(() {
+    //   _todoItems = task;
+    //   });
+    // });
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Check Yourself'),
@@ -98,7 +103,7 @@ class TodoListState extends State<TodoList> {
   }
 
   void _pushAddToDo() {
-    print (_todoItems.toString());
+    print (_todoItems[_todoItems.length - 1].name.toString());
     Navigator.of(context).push(
         new MaterialPageRoute(
             builder: (context) {
@@ -107,8 +112,8 @@ class TodoListState extends State<TodoList> {
                   ),
                   body: new TextField(
                     autofocus: true,
-                    onSubmitted: (val) {
-                      _addTodo(_todoItems, val);
+                    onSubmitted: (task) {
+                      _addTodo(_todoItems, task);
                       Navigator.pop(context);
                     },
                     decoration: new InputDecoration(
@@ -124,7 +129,7 @@ class TodoListState extends State<TodoList> {
 
   void _removeTodo(List thisList, int index) {
     setState(() => _todoItems.removeAt(index));
-    _saveTodoData();
+    // _saveTodoData();
   }
 
   void _promptRemoveToDo(List thisList, int index) {
@@ -147,22 +152,22 @@ class TodoListState extends State<TodoList> {
     );
   }
 
-  
-  static Future<List<String>> _getTodoData() async{
-    final prefs = await SharedPreferences.getInstance();
-    final todoData = prefs.getStringList('_todoItems');
-    if (todoData == null){
-      return [];
-    }
-    else{
-      return todoData;
-    }
-  }
+  // TO DO: THE FOLLOWING NEED TO BE REVISED
+  // static Future<List<Task>> _getTodoData() async{
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final todoData = prefs.getStringList('_todoItems');
+  //   if (todoData == null){
+  //     return [];
+  //   }
+  //   else{
+  //     return todoData;
+  //   }
+  // }
 
-  void _saveTodoData() async{
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setStringList('_todoItems', _todoItems);
-  }
+  // void _saveTodoData() async{
+  //   final prefs = await SharedPreferences.getInstance();
+  //   prefs.setStringList('_todoItems', _todoItems);
+  // }
 
 
 }
