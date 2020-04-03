@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/task.dart';
-import 'package:todo_app/task_op.dart'; // for RemoveTask(task) in _buildDeleteButton
+import 'package:todo_app/models/task.dart';
 
 class TodoItem extends StatelessWidget {
   final Task task;
