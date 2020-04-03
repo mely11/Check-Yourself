@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:calendar_strip/calendar_strip.dart';
-import 'package:todo_app/screens/calendar.dart';
 import 'package:todo_app/models/todo_model.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/widgets/todo_list.dart';
@@ -12,10 +10,6 @@ class TodoListScreen extends StatefulWidget{
   createState()=> new TodoListScreenState();
 }
 class TodoListScreenState extends State<TodoListScreen> {
-//  @override
-//  Widget build(BuildContext context){
-//    return new Scaffold(appBar: new AppBar(title: new Text('Check Yourself')));
-//  }
 
   Widget _buildToDoList(BuildContext context){
     return Consumer<TodoModel>(
@@ -54,6 +48,8 @@ class TodoListScreenState extends State<TodoListScreen> {
 
   void _pushAddToDo() {
     Navigator.of(context).push(
+      //TODO: this is a separate page that maybe should be it's own screen file, particularly if it gets more complicated
+      // e.g. if you also add some validation to not let you duplicate task names etc.
         new MaterialPageRoute(
             builder: (context) {
               return new Scaffold(
