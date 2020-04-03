@@ -32,7 +32,7 @@ class TodoModel extends ChangeNotifier {
   }
 
   void removeTodo(Task task) {
-    _todoItems.remove(Task);
+    _todoItems.remove(task);
     notifyListeners();
     _saveTodoData();
   }
