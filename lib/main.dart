@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
-import 'todo_operations.dart';
+import 'package:todo_app/screens/todo_list_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/models/todo_model.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(
+  ChangeNotifierProvider(
+      create: (context) => TodoModel(),
+      child: MyApp(),
+    ),
+  );
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
         title: 'Check Yourself',
-        home: new TodoList()
+        home: new TodoListScreen()
     );
   }
 }
