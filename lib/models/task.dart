@@ -11,10 +11,10 @@ class Task {
         done = json['done'];
 
   Map<String, dynamic> toJson() =>
-    {
-      'name': name,
-      'done': done,
-    };
+      {
+        'name' : name,
+        'done' : done,
+      };
 
   void toggleDone() {
     done = !done;
