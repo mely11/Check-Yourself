@@ -18,7 +18,7 @@ class TodoItem extends StatelessWidget {
           onChanged: (bool value) {
             Provider.of<TodoModel>(context, listen: false).toggleDone(task);
           },
-          activeColor: checkedColor, // the color appears when this checkbox is checked
+          activeColor: checkedColor, // the color appears when this checkbox is checked, Colors.black12 looks better?
           checkColor: iconColor,
           secondary: IconButton(
             onPressed: () => _promptRemoveToDo(context),
@@ -27,8 +27,13 @@ class TodoItem extends StatelessWidget {
           ),
           
           controlAffinity: ListTileControlAffinity.leading,
-          title: Text(task.name)
-          
+          title: Text(task.name, style: TextStyle(
+                      color: task.done ? Colors.black38 : Colors.black87,
+                      fontSize: 18.7,
+                      decoration: task.done
+                      ? TextDecoration.lineThrough
+                      : TextDecoration.none)
+          )
     );
   }
 
