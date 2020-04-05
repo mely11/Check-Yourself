@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:calendar_strip/calendar_strip.dart';
+import 'package:todo_app/globals.dart' as globals;
+import 'package:todo_app/models/date_operations.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,6 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   onSelect(data) {
+    String selectedDate = DateOperations().getStringDate(data);
+    globals.setDate = selectedDate;
     print("Selected Date -> $data");
   }
 

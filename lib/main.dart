@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/models/date_operations.dart';
 import 'package:todo_app/screens/todo_list_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/models/todo_model.dart';
+import 'globals.dart' as globals;
 
-void main() => runApp(
-  ChangeNotifierProvider(
+void main() {
+  globals.setDate = DateOperations().getCurrentDate();
+  runApp(
+    ChangeNotifierProvider(
       create: (context) => TodoModel(),
       child: MyApp(),
     ),
   );
+}
 
 class MyApp extends StatelessWidget {
   @override
