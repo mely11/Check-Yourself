@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/todo_model.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_app/screens/options_screen.dart';
 import 'package:todo_app/widgets/todo_list.dart';
 import 'package:todo_app/models/task.dart';
 
@@ -59,7 +60,11 @@ class TodoListScreenState extends State<TodoListScreen> {
   }
 
   void _gotoOptions(){
-    print('You pressed the option button!');
+    Navigator.of(context).push(
+      new MaterialPageRoute(builder: (context) => OptionsScreen()
+        ,)
+    );
+
   }
 
   void _pushAddToDo() {
