@@ -4,10 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_app/models/task.dart';
 import 'dart:convert';
+import 'package:todo_app/globals.dart' as globals;
+
 
 class TodoModel extends ChangeNotifier {
 
   final List<Task> _todoItems = [];
+  final String keyDate = globals.setDate;
 
   UnmodifiableListView<Task> get todoItems => UnmodifiableListView(_todoItems);
 
@@ -18,6 +21,7 @@ class TodoModel extends ChangeNotifier {
       notifyListeners();
     });
   }
+
 
   void addTodo(Task task) {
     _todoItems.add(task);
@@ -45,10 +49,10 @@ class TodoModel extends ChangeNotifier {
     _saveTodoData();
   }
 
-static Future<List<String>> _getTodoData() async{
+  Future<List<String>> _getTodoData() async{
 
     final prefs = await SharedPreferences.getInstance();
-    final todoData = prefs.getStringList('_todoItems');
+    final todoData = prefs.getStringList(keyDate+'_todoItems');
     if (todoData == null){
     return [];
     }
@@ -60,6 +64,6 @@ static Future<List<String>> _getTodoData() async{
   void _saveTodoData() async{
     final prefs = await SharedPreferences.getInstance();
     List<String> encodedTasks = this._todoItems != null ? this._todoItems.map((i) => json.encode(i.toJson())).toList() : null;
-    prefs.setStringList('_todoItems', encodedTasks);
+    prefs.setStringList(keyDate+'_todoItems', encodedTasks);
   }
 }
