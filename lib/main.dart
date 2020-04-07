@@ -8,8 +8,10 @@ import 'globals.dart' as globals;
 void main() {
   globals.setDate = DateOperations().getCurrentDate();
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => TodoModel(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider (create: (context) => TodoModel()),
+      ],
       child: MyApp(),
     ),
   );
