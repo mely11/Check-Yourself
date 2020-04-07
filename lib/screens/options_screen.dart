@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class OptionsScreen extends StatelessWidget{
+class OptionsScreen extends StatefulWidget{
+  @override
+  createState()=> new OptionsScreenState();
+}
+
+class OptionsScreenState extends State<OptionsScreen>{
 
   Widget _buildOptionsList(BuildContext context){
     return new ListView(
