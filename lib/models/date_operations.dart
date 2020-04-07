@@ -8,9 +8,9 @@ class DateOperations{
 }
 
   String getStringDate(DateTime dateTime){
-    String day = dateTime.day.toString();
-    String month = dateTime.month.toString();
-    String year = dateTime.year.toString();
-    return day+month+year;
+      String day = dateTime.day.toString();
+      String month = dateTime.month.toString();
+      String year = dateTime.year.toString();
+      return month+'/'+day+'/'+year;
   }
 }

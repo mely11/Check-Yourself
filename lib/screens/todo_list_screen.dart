@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:todo_app/screens/options_screen.dart';
 import 'package:todo_app/widgets/todo_list.dart';
 import 'package:todo_app/models/task.dart';
+import 'package:todo_app/globals.dart' as globals;
 
 
 class TodoListScreen extends StatefulWidget{
@@ -24,7 +25,7 @@ class TodoListScreenState extends State<TodoListScreen> {
     
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Check Yourself'),
+        title: new Text('Check Yourself '+globals.setDate),
         actions: <Widget>[
           IconButton(
               onPressed: _pushAddToDo,

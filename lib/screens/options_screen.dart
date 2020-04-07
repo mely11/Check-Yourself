@@ -46,8 +46,8 @@ class OptionsScreen extends StatelessWidget{
   Widget build(BuildContext context) {
 
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text ('Options'),
+      appBar: AppBar(
+        title: Text ('Options'),
       ),
       body: _buildOptionsList(context)
     );
@@ -57,13 +57,13 @@ class OptionsScreen extends StatelessWidget{
   void _promptDataDelete(BuildContext context){
     showDialog(context: context, builder: (BuildContext context) {
       return new AlertDialog(
-          title: new Text('Delete ALL User Data?'),
-          content: new Text('This will close Check Yourself'),
+          title: Text('Delete ALL User Data?'),
+          content: Text('This will close Check Yourself'),
           actions: <Widget>[
             new FlatButton(onPressed: () => Navigator.of(context).pop(),
-                child: new Text ('Cancel')),
+                child: Text ('Cancel')),
             new FlatButton(
-                child: new Text('DELETE ALL'),
+                child: Text('DELETE ALL'),
                 onPressed: () {
                   _deleteData();
                 }

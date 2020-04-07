@@ -53,15 +53,9 @@ class TodoModel extends ChangeNotifier {
 
     final prefs = await SharedPreferences.getInstance();
     final todoData = prefs.getStringList(keyDate+'_todoItems');
-    if (todoData == null){
-      final recurData = prefs.getStringList('recurringTasks');
-      if (recurData != null){
-        return recurData;
-      }
-      else {
+    if (todoData == null) {
         return [];
       }
-    }
     else{
       return todoData;
     }
@@ -72,4 +66,6 @@ class TodoModel extends ChangeNotifier {
     List<String> encodedTasks = this._todoItems != null ? this._todoItems.map((i) => json.encode(i.toJson())).toList() : null;
     prefs.setStringList(keyDate+'_todoItems', encodedTasks);
   }
+
+
 }
