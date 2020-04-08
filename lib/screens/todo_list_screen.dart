@@ -29,6 +29,11 @@ class TodoListScreenState extends State<TodoListScreen> {
         title: new Text('Check Yourself '+globals.setDate),
         actions: <Widget>[
           IconButton(
+            onPressed: _gotoCalendar,
+            tooltip: 'Open Calendar',
+            icon: Icon(Icons.calendar_today,),
+          ),
+          IconButton(
               onPressed: _pushAddToDo,
               tooltip: 'Add task',
               icon: Icon(Icons.library_add, size:30.0)
