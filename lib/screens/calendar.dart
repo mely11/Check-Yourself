@@ -24,9 +24,9 @@ class CalendarScreenState extends State<Calendar> {
     String selectedDate = DateOperations().getStringDate(data);
     globals.setDate = selectedDate;
     print("Selected Date -> $data");
-    if (selectedDate != DateOperations().getCurrentDate) {
-      Provider.of<TodoModel> (context, listen: false).refreshAll();
-    }
+    // if (selectedDate != DateOperations().getCurrentDate) {
+      // Provider.of<TodoModel> (context, listen: false).refreshAll();
+    // }
     
   }
 
