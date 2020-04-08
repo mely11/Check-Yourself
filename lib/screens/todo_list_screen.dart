@@ -43,11 +43,6 @@ class TodoListScreenState extends State<TodoListScreen> {
             tooltip: 'Options',
             icon: Icon(Icons.settings),
           ),
-          IconButton(
-            onPressed: _gotoCalendar,
-            tooltip: 'Open Calendar',
-            icon: Icon(Icons.calendar_today),
-          )
         ],
    ),
       body: _buildToDoList(context), 
