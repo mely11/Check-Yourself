@@ -3,14 +3,12 @@ import 'package:calendar_strip/calendar_strip.dart';
 import 'package:todo_app/globals.dart' as globals;
 import 'package:todo_app/models/date_operations.dart';
 
-//void main() => runApp(CalendarScreenState());
-
 class Calendar extends StatefulWidget{
   @override
-  createState()=> new Calendarscreenstate();
+  createState()=> new CalendarScreenState();
 }
 
-class Calendarscreenstate extends State<Calendar> {
+class CalendarScreenState extends State<Calendar> {
   DateTime startDate = DateTime.now().subtract(Duration(days: 2));
   DateTime endDate = DateTime.now().add(Duration(days: 2));
   DateTime selectedDate = DateTime.now().subtract(Duration(days: 2));
