@@ -9,8 +9,8 @@ import 'package:todo_app/globals.dart' as globals;
 
 class TodoModel extends ChangeNotifier {
 
-  final List<Task> _todoItems = [];
-  final String keyDate = globals.setDate;
+  List<Task> _todoItems = [];
+  String keyDate = globals.setDate;
 
   UnmodifiableListView<Task> get todoItems => UnmodifiableListView(_todoItems);
 
@@ -65,6 +65,17 @@ class TodoModel extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     List<String> encodedTasks = this._todoItems != null ? this._todoItems.map((i) => json.encode(i.toJson())).toList() : null;
     prefs.setStringList(keyDate+'_todoItems', encodedTasks);
+  }
+
+  void refreshAll (){
+    keyDate = globals.setDate;
+    _todoItems = [];
+    _getTodoData().then((data) {
+      _todoItems.addAll(
+          data.map((i) => Task.fromJson(json.decode(i))).toList());
+      notifyListeners();
+    }
+    );
   }
 
 

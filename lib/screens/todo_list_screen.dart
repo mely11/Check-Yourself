@@ -8,7 +8,6 @@ import 'package:todo_app/models/task.dart';
 import 'package:todo_app/globals.dart' as globals;
 
 
-
 class TodoListScreen extends StatefulWidget{
   @override
   createState()=> new TodoListScreenState();
@@ -67,12 +66,14 @@ class TodoListScreenState extends State<TodoListScreen> {
     );
   }
 
-  void _gotoOptions(){
-    Navigator.of(context).push(
-      new MaterialPageRoute(builder: (context) => OptionsScreen()
-        ,)
+  void _gotoOptions() async{
+    await Navigator.of(context).push(
+        new MaterialPageRoute(builder: (context) => OptionsScreen()
+          ,)
     );
-
+    setState(() {
+      build(context);
+    });
   }
   void gotoCalendar(){
     Navigator.of(context).push(
@@ -81,6 +82,7 @@ class TodoListScreenState extends State<TodoListScreen> {
     );
 
   }
+
 
   void _pushAddToDo() {
     Navigator.of(context).push(

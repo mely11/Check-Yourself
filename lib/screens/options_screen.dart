@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/globals.dart' as globals;
+import 'package:todo_app/models/date_operations.dart';
+import 'package:todo_app/models/todo_model.dart';
 
 class OptionsScreen extends StatefulWidget{
   @override
@@ -19,16 +23,10 @@ class OptionsScreenState extends State<OptionsScreen>{
         ),
         Card(
           child: ListTile(
-            onTap: () => _addRecurringTask(),
-            title: Text('Add a Recurring Task'),
+            onTap: () => _editRecurringTask(),
+            title: Text('Edit Recuring Tasks'),
+            subtitle: Text('rn a test button for moving between pages'),
             leading: Icon(Icons.add_box, color: Colors.lightBlue),
-          ),
-        ),
-        Card(
-          child: ListTile(
-            onTap: () => _removeRecurringTask(),
-            title: Text('Remove a Recurring Task'),
-            leading: Icon(Icons.cancel, color: Colors.redAccent),
           ),
         ),
         ListTile(
@@ -63,7 +61,7 @@ class OptionsScreenState extends State<OptionsScreen>{
     showDialog(context: context, builder: (BuildContext context) {
       return new AlertDialog(
           title: Text('Delete ALL User Data?'),
-          content: Text('This will close Check Yourself'),
+          content: Text('This will load a blank checklist'),
           actions: <Widget>[
             new FlatButton(onPressed: () => Navigator.of(context).pop(),
                 child: Text ('Cancel')),
@@ -71,6 +69,7 @@ class OptionsScreenState extends State<OptionsScreen>{
                 child: Text('DELETE ALL'),
                 onPressed: () {
                   _deleteData();
+                  Navigator.of(context).pop();
                 }
             )
           ]
@@ -83,15 +82,20 @@ class OptionsScreenState extends State<OptionsScreen>{
     final prefs = await SharedPreferences.getInstance();
     prefs.clear();
     print ('data deleted');
-    SystemNavigator.pop();
+    globals.setDate = DateOperations().getCurrentDate();
+    Provider.of<TodoModel> (context, listen: false).refreshAll();
+    Navigator.of(context).pop();
   }
 
-  void _addRecurringTask(){
-    print ('add a task');
-  }
-
-  void _removeRecurringTask(){
-    print ('remove a task');
+  //NOTE: THIS IS CURRENTLY NOT ACTUALLY A METHOD TO EDIT RECURRING TASKS
+  //SINCE THE BUTTON WAS THERE AND ON A DIFFERENT SCREEN I'VE BEEN USING IT TO TEST
+  //DATA REFRESHING IN MOVING BACK AND FORTH BETWEEN THE TODOLISTSCREEN
+  void _editRecurringTask(){
+    globals.setDate = 'ruecr';
+    Provider.of<TodoModel> (context, listen: false).refreshAll();
+    print ('editing tasks');
+    print (Provider.of<TodoModel>(context, listen: false).keyDate);
+    Navigator.of(context).pop();
   }
 
 }
