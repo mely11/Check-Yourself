@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:calendar_strip/calendar_strip.dart';
 import 'package:todo_app/globals.dart' as globals;
 import 'package:todo_app/models/date_operations.dart';
+import 'package:provider/provider.dart';
+import '../models/todo_model.dart';
 
 class Calendar extends StatefulWidget{
   @override
@@ -22,6 +24,10 @@ class CalendarScreenState extends State<Calendar> {
     String selectedDate = DateOperations().getStringDate(data);
     globals.setDate = selectedDate;
     print("Selected Date -> $data");
+    if (selectedDate != DateOperations().getCurrentDate) {
+      Provider.of<TodoModel> (context, listen: false).refreshAll();
+    }
+    
   }
 
   _monthNameWidget(monthName) {

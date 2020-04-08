@@ -39,30 +39,13 @@ class TodoListScreenState extends State<TodoListScreen> {
             icon: Icon(Icons.settings),
           ),
           IconButton(
-            onPressed: gotoCalendar,
+            onPressed: _gotoCalendar,
             tooltip: 'Open Calendar',
             icon: Icon(Icons.calendar_today),
           )
         ],
-        // TO DO:
-        // INTEGRATE THIS CALENDAR PART INTO THE CURRENT TO DO LIST
-    //   body: Container(
-    //       child: CalendarStrip(
-    //       startDate: startDate,
-    //       endDate: endDate,
-    //       onDateSelected: onSelect,
-    //       dateTileBuilder: dateTileBuilder,
-    //       iconColor: Colors.black87,
-    //       monthNameWidget: _monthNameWidget,
-    //       markedDates: markedDates,
-    //       containerDecoration: BoxDecoration(color: Colors.black12),
-    ),
+   ),
       body: _buildToDoList(context), 
-//      floatingActionButton: new FloatingActionButton(
-//          onPressed: _pushAddToDo,
-//          tooltip: 'Add task',
-//          child: new Icon(Icons.add)
-//      ),
     );
   }
 
@@ -75,14 +58,13 @@ class TodoListScreenState extends State<TodoListScreen> {
       build(context);
     });
   }
-  void gotoCalendar(){
+
+  void _gotoCalendar(){
     Navigator.of(context).push(
         new MaterialPageRoute(builder: (context) => Calendar()
           ,)
     );
-
   }
-
 
   void _pushAddToDo() {
     Navigator.of(context).push(
