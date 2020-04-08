@@ -60,13 +60,15 @@ class TodoListScreenState extends State<TodoListScreen> {
     );
   }
 
-  void _gotoOptions(){
-    Navigator.of(context).push(
-      new MaterialPageRoute(builder: (context) => OptionsScreen()
-        ,)
-    );
-
-  }
+  void _gotoOptions() async{
+  await Navigator.of(context).push(
+  new MaterialPageRoute(builder: (context) => OptionsScreen()
+  ,)
+  );
+  setState(() {
+  build(context);
+  });
+}
 
   void _pushAddToDo() {
     Navigator.of(context).push(
