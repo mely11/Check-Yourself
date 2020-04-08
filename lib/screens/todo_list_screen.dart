@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/todo_model.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_app/screens/calendar.dart';
 import 'package:todo_app/screens/options_screen.dart';
 import 'package:todo_app/widgets/todo_list.dart';
 import 'package:todo_app/models/task.dart';
 import 'package:todo_app/globals.dart' as globals;
+
 
 
 class TodoListScreen extends StatefulWidget{
@@ -36,6 +38,11 @@ class TodoListScreenState extends State<TodoListScreen> {
             onPressed: _gotoOptions,
             tooltip: 'Options',
             icon: Icon(Icons.settings),
+          ),
+          IconButton(
+            onPressed: gotoCalendar,
+            tooltip: 'Open Calendar',
+            icon: Icon(Icons.calendar_today),
           )
         ],
         // TO DO:
@@ -64,6 +71,13 @@ class TodoListScreenState extends State<TodoListScreen> {
     Navigator.of(context).push(
       new MaterialPageRoute(builder: (context) => OptionsScreen()
         ,)
+    );
+
+  }
+  void gotoCalendar(){
+    Navigator.of(context).push(
+        new MaterialPageRoute(builder: (context) => Calendar()
+          ,)
     );
 
   }

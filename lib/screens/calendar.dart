@@ -3,29 +3,14 @@ import 'package:calendar_strip/calendar_strip.dart';
 import 'package:todo_app/globals.dart' as globals;
 import 'package:todo_app/models/date_operations.dart';
 
-void main() => runApp(MyApp());
+//void main() => runApp(CalendarScreenState());
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class Calendar extends StatefulWidget{
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
+  createState()=> new Calendarscreenstate();
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class Calendarscreenstate extends State<Calendar> {
   DateTime startDate = DateTime.now().subtract(Duration(days: 2));
   DateTime endDate = DateTime.now().add(Duration(days: 2));
   DateTime selectedDate = DateTime.now().subtract(Duration(days: 2));
@@ -45,7 +30,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Container(
       child: Text(monthName,
           style:
-              TextStyle(fontSize: 17, fontWeight: FontWeight.w600, color: Colors.black87, fontStyle: FontStyle.italic)),
+          TextStyle(fontSize: 17,
+              fontWeight: FontWeight.w600,
+              color: Colors.black87,
+              fontStyle: FontStyle.italic)),
       padding: EdgeInsets.only(top: 8, bottom: 4),
     );
   }
@@ -66,15 +54,19 @@ class _MyHomePageState extends State<MyHomePage> {
     ]);
   }
 
-  dateTileBuilder(date, selectedDate, rowIndex, dayName, isDateMarked, isDateOutOfRange) {
+  dateTileBuilder(date, selectedDate, rowIndex, dayName, isDateMarked,
+      isDateOutOfRange) {
     bool isSelectedDate = date.compareTo(selectedDate) == 0;
     Color fontColor = isDateOutOfRange ? Colors.black26 : Colors.black87;
-    TextStyle normalStyle = TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: fontColor);
-    TextStyle selectedStyle = TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: Colors.black87);
+    TextStyle normalStyle = TextStyle(
+        fontSize: 17, fontWeight: FontWeight.w800, color: fontColor);
+    TextStyle selectedStyle = TextStyle(
+        fontSize: 17, fontWeight: FontWeight.w800, color: Colors.black87);
     TextStyle dayNameStyle = TextStyle(fontSize: 14.5, color: fontColor);
     List<Widget> _children = [
       Text(dayName, style: dayNameStyle),
-      Text(date.day.toString(), style: !isSelectedDate ? normalStyle : selectedStyle),
+      Text(date.day.toString(),
+          style: !isSelectedDate ? normalStyle : selectedStyle),
     ];
 
     if (isDateMarked == true) {
@@ -99,19 +91,20 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Calender'),
       ),
       body: Container(
           child: CalendarStrip(
-        startDate: startDate,
-        endDate: endDate,
-        onDateSelected: onSelect,
-        dateTileBuilder: dateTileBuilder,
-        iconColor: Colors.black87,
-        monthNameWidget: _monthNameWidget,
-        markedDates: markedDates,
-        containerDecoration: BoxDecoration(color: Colors.black12),
-      )),
+            startDate: startDate,
+            endDate: endDate,
+            onDateSelected: onSelect,
+            dateTileBuilder: dateTileBuilder,
+            iconColor: Colors.black87,
+            monthNameWidget: _monthNameWidget,
+            markedDates: markedDates,
+            containerDecoration: BoxDecoration(color: Colors.black12),
+          )),
     );
   }
 }
+
