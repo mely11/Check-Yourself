@@ -9,11 +9,12 @@ import 'package:todo_app/globals.dart' as globals;
 
 
 class TodoListScreen extends StatefulWidget{
+  // This class builds TodoListScreenState as a stateful widget
   @override
   createState()=> new TodoListScreenState();
 }
 class TodoListScreenState extends State<TodoListScreen> {
-
+  // this class creates a TodoList ysing Consumer for state management
   Widget _buildToDoList(BuildContext context){
     return Consumer<TodoModel>(
       builder: (context, todos, child) => TodoList(todoItems: todos.todoItems)
@@ -23,7 +24,7 @@ class TodoListScreenState extends State<TodoListScreen> {
 
   @override
   Widget build(BuildContext context){
-    
+    // builds all the buttons with their actions as well as the todoList
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Check Yourself '+globals.setDate),
@@ -50,6 +51,7 @@ class TodoListScreenState extends State<TodoListScreen> {
   }
 
   void _gotoOptions() async{
+    // Creates and pushes a new options screen state that builds the option list
     await Navigator.of(context).push(
         new MaterialPageRoute(builder: (context) => OptionsScreen()
           ,)
@@ -60,6 +62,7 @@ class TodoListScreenState extends State<TodoListScreen> {
   }
 
   void _gotoCalendar(){
+    // Creates a calendar and pushes to the calendar page
     Navigator.of(context).push(
         new MaterialPageRoute(builder: (context) => Calendar()
           ,)
@@ -67,6 +70,8 @@ class TodoListScreenState extends State<TodoListScreen> {
   }
 
   void _pushAddToDo() {
+    // creates/pop up a new page for adding a task and uses Provider to call the corresponding 
+    // addTodo method in TodoModel, which handles adding and saving new task
     Navigator.of(context).push(
       //TODO: this is a separate page that maybe should be it's own screen file, particularly if it gets more complicated
       // e.g. if you also add some validation to not let you duplicate task names etc.

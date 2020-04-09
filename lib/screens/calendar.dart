@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:calendar_strip/calendar_strip.dart';
 import 'package:todo_app/globals.dart' as globals;
 import 'package:todo_app/models/date_operations.dart';
-import 'package:provider/provider.dart';
-import '../models/todo_model.dart';
+// import 'package:provider/provider.dart';
+// import '../models/todo_model.dart';
 
 class Calendar extends StatefulWidget{
+  // This class creates a new calendar screen state as a stateful widget
   @override
   createState()=> new CalendarScreenState();
 }
 
 class CalendarScreenState extends State<Calendar> {
+  // This class sets up a calendar state 
   DateTime startDate = DateTime.now().subtract(Duration(days: 2));
   DateTime endDate = DateTime.now().add(Duration(days: 2));
   DateTime selectedDate = DateTime.now().subtract(Duration(days: 2));
@@ -21,6 +23,8 @@ class CalendarScreenState extends State<Calendar> {
   ];
 
   onSelect(data) {
+    // onSelect method reassigns the global 'setDate' variable, 
+    // updates the todo list screen, and returns the user to said screen
     String selectedDate = DateOperations().getStringDate(data);
     globals.setDate = selectedDate;
     print("Selected Date -> $data");
@@ -31,6 +35,7 @@ class CalendarScreenState extends State<Calendar> {
   }
 
   _monthNameWidget(monthName) {
+    // monthNameWidget method returns the container widget creating month names
     return Container(
       child: Text(monthName,
           style:
@@ -43,6 +48,7 @@ class CalendarScreenState extends State<Calendar> {
   }
 
   getMarkedIndicatorWidget() {
+    // getMarkedIndicatorWidget method returns the getMarkedIndicator widget 
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       Container(
         margin: EdgeInsets.only(left: 1, right: 1),
@@ -60,6 +66,7 @@ class CalendarScreenState extends State<Calendar> {
 
   dateTileBuilder(date, selectedDate, rowIndex, dayName, isDateMarked,
       isDateOutOfRange) {
+    // dateTileBuilder method builds the date tile and animates the container
     bool isSelectedDate = date.compareTo(selectedDate) == 0;
     Color fontColor = isDateOutOfRange ? Colors.black26 : Colors.black87;
     TextStyle normalStyle = TextStyle(
@@ -93,6 +100,7 @@ class CalendarScreenState extends State<Calendar> {
 
   @override
   Widget build(BuildContext context) {
+    // build method builds the calendar
     return Scaffold(
       appBar: AppBar(
         title: Text('Calender'),

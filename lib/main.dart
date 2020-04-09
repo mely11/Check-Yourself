@@ -6,6 +6,7 @@ import 'package:todo_app/models/todo_model.dart';
 import 'globals.dart' as globals;
 
 void main() {
+  // main function that sets current date and calls upon MyApp
   globals.setDate = DateOperations().getCurrentDate();
   runApp(
     MultiProvider(
@@ -18,6 +19,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  // Creates and builds the app/TodoListScreen 
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(

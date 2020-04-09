@@ -5,12 +5,14 @@ import 'package:todo_app/models/todo_model.dart';
 
 
 class TodoItem extends StatelessWidget {
+  // This class creates a todoItem, including its properties
   final Task task;
   
-  TodoItem({@required this.task});
+  TodoItem({@required this.task}); // the constuctor for a todoItem that requires a task
 
   @override
   Widget build(BuildContext context) {
+    // builds the todoItem
     Color checkedColor = const Color.fromARGB(0xFF, 0x81, 0xA5, 0xF1);  // the color appears when this checkbox is checked
     Color iconColor = const Color.fromARGB(0xFE, 0xFE, 0xFE, 0xFE); 
     return new CheckboxListTile(
@@ -38,6 +40,10 @@ class TodoItem extends StatelessWidget {
   }
 
   void _promptRemoveToDo(BuildContext context) {
+    // Creates a prompt with an alert message in a new page, which results in either 
+    // the cancellation of the removal or the removal of the intended/pressed task 
+    // from the todoItems list using removeTodo method in TodoModel class with 
+    // the aid of Provider as a mocked class while popping the alert/prompt page
     showDialog(context: context, builder: (BuildContext context) {
       return new AlertDialog(
           title: new Text('Delete "${task.name}" ?'),
