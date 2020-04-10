@@ -90,7 +90,7 @@ class TodoModel extends ChangeNotifier {
   }
 
   void refreshAll (){
-    // refreshs the page to contain an empty set of todoItem 
+    // refreshes the page to contain an empty set of todoItem 
     // in the _todoItems list while notifying the listeners
     keyDate = globals.setDate;
     _todoItems = [];
