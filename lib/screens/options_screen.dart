@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/globals.dart' as globals;
 import 'package:todo_app/models/date_operations.dart';
+import 'package:todo_app/models/recur_list_model.dart';
 import 'package:todo_app/models/todo_model.dart';
+import 'package:todo_app/screens/edit_recurance_screen.dart';
 
 class OptionsScreen extends StatefulWidget{
   // This class creates a new options screen state as a stateful widget
@@ -27,7 +28,6 @@ class OptionsScreenState extends State<OptionsScreen>{
           child: ListTile(
             onTap: () => _editRecurringTask(),
             title: Text('Edit Recuring Tasks'),
-            subtitle: Text('rn a test button for moving between pages'),
             leading: Icon(Icons.add_box, color: Colors.lightBlue),
           ),
         ),
@@ -88,6 +88,7 @@ class OptionsScreenState extends State<OptionsScreen>{
     print ('data deleted');
     globals.setDate = DateOperations().getCurrentDate();
     Provider.of<TodoModel> (context, listen: false).refreshAll();
+    Provider.of<RecurListModel> (context, listen:false).refreshAll();
     Navigator.of(context).pop();
   }
 
@@ -96,11 +97,10 @@ class OptionsScreenState extends State<OptionsScreen>{
   //DATA REFRESHING IN MOVING BACK AND FORTH BETWEEN THE TODOLISTSCREEN
   void _editRecurringTask(){
     // This method edits the recurring task
-    globals.setDate = 'ruecr';
-    Provider.of<TodoModel> (context, listen: false).refreshAll();
-    print ('editing tasks');
-    print (Provider.of<TodoModel>(context, listen: false).keyDate);
-    Navigator.of(context).pop();
+    Navigator.of(context).push(
+        new MaterialPageRoute(builder: (context) => EditRecuranceScreen()
+        )
+    );
   }
 
 }
