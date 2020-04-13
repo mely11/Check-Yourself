@@ -27,7 +27,7 @@ class TodoListScreenState extends State<TodoListScreen> {
     // builds all the buttons with their actions as well as the todoList
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Check Yourself '+globals.setDate),
+        title: new Text('Todo List: '+globals.setDate),
         actions: <Widget>[
           IconButton(
             onPressed: _gotoCalendar,

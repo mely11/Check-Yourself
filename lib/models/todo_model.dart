@@ -67,7 +67,7 @@ class TodoModel extends ChangeNotifier {
   }
 
   Future<List<String>> _getTodoData() async{
-    // obtains a todo string list or sets to be an empty list of strings
+    // obtains a to-do string list or sets to be an empty list of strings
     final prefs = await SharedPreferences.getInstance();
     final todoData = prefs.getStringList(keyDate+'_todoItems');
     if (todoData == null) {
