@@ -4,6 +4,7 @@ import 'package:todo_app/models/recur_list_model.dart';
 import 'package:todo_app/screens/todo_list_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/models/todo_model.dart';
+// import 'package:todo_app/screens/loading_screen.dart';
 import 'globals.dart' as globals;
 
 void main() {
