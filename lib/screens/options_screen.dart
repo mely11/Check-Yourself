@@ -27,7 +27,7 @@ class OptionsScreenState extends State<OptionsScreen>{
         Card(
           child: ListTile(
             onTap: () => _editRecurringTask(),
-            title: Text('Edit Recuring Tasks'),
+            title: Text('Edit Recurring Tasks'),
             leading: Icon(Icons.add_box, color: Colors.lightBlue),
           ),
         ),
@@ -92,9 +92,6 @@ class OptionsScreenState extends State<OptionsScreen>{
     Navigator.of(context).pop();
   }
 
-  //NOTE: THIS IS CURRENTLY NOT ACTUALLY A METHOD TO EDIT RECURRING TASKS
-  //SINCE THE BUTTON WAS THERE AND ON A DIFFERENT SCREEN I'VE BEEN USING IT TO TEST
-  //DATA REFRESHING IN MOVING BACK AND FORTH BETWEEN THE TODOLISTSCREEN
   void _editRecurringTask(){
     // This method edits the recurring task
     Navigator.of(context).push(

@@ -71,7 +71,7 @@ class TodoModel extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     final todoData = prefs.getStringList(keyDate+'_todoItems');
     if (todoData == null) {
-        return [];
+      return _loadRecurrences();
       }
     else{
       return todoData;
@@ -87,6 +87,34 @@ class TodoModel extends ChangeNotifier {
     List<String> encodedTasks = this._todoItems != null ? this._todoItems.map(
       (i) => json.encode(i.toJson())).toList() : null;
     prefs.setStringList(keyDate+'_todoItems', encodedTasks);
+  }
+
+  Future<List<String>> _loadRecurrences() async{
+    final prefs = await SharedPreferences.getInstance();
+    final dailyRecur = prefs.getStringList('daily');
+    List<String> weekDayRecur;
+    _loadDailyRecurrences().then((data) {
+      weekDayRecur = data;
+    });
+    final totalRecur = dailyRecur+weekDayRecur;
+    if (totalRecur != null){
+      return totalRecur;
+    }
+    else {return [];}
+  }
+
+  Future<List<String>> _loadDailyRecurrences() async{
+    final prefs = await SharedPreferences.getInstance();
+    int today = globals.weekDay;
+    if (today == 1) { return prefs.getStringList('monday');}
+    if (today == 2) { return prefs.getStringList('yuesday');}
+    if (today == 3) { return prefs.getStringList('wednesday');}
+    if (today == 4) { return prefs.getStringList('thursday');}
+    if (today == 5) { return prefs.getStringList('friday');}
+    if (today == 6) { return prefs.getStringList('saturday');}
+    if (today == 7) { return prefs.getStringList('sunday');}
+    else {return null;}
+
   }
 
   void refreshAll (){

@@ -10,7 +10,7 @@ import 'globals.dart' as globals;
 void main() {
   // main function that sets current date and calls upon MyApp
   globals.setDate = DateOperations().getCurrentDate();
-//  globals.setDate = 'allRecur';
+  globals.weekDay = DateTime.now().weekday;
   runApp(
     MultiProvider(
       providers: [
