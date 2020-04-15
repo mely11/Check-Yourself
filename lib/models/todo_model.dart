@@ -96,7 +96,7 @@ class TodoModel extends ChangeNotifier {
     _loadDailyRecurrences().then((data) {
       weekDayRecur = data;
     });
-    final totalRecur = dailyRecur+weekDayRecur;
+    final totalRecur = (weekDayRecur == null) ? dailyRecur: (dailyRecur+weekDayRecur);
     if (totalRecur != null){
       return totalRecur;
     }
@@ -107,7 +107,7 @@ class TodoModel extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     int today = globals.weekDay;
     if (today == 1) { return prefs.getStringList('monday');}
-    if (today == 2) { return prefs.getStringList('yuesday');}
+    if (today == 2) { return prefs.getStringList('tuesday');}
     if (today == 3) { return prefs.getStringList('wednesday');}
     if (today == 4) { return prefs.getStringList('thursday');}
     if (today == 5) { return prefs.getStringList('friday');}

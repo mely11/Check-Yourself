@@ -14,7 +14,7 @@ class TodoListScreen extends StatefulWidget{
   createState()=> new TodoListScreenState();
 }
 class TodoListScreenState extends State<TodoListScreen> {
-  // this class creates a TodoList ysing Consumer for state management
+  // this class creates a TodoList using Consumer for state management
   Widget _buildToDoList(BuildContext context){
     return Consumer<TodoModel>(
       builder: (context, todos, child) => TodoList(todoItems: todos.todoItems)
@@ -70,10 +70,10 @@ class TodoListScreenState extends State<TodoListScreen> {
   }
 
   void _pushAddToDo() {
-    // creates/pop up a new page for adding a task and uses Provider to call the corresponding 
+    // creates/pops up a new page for adding a task and uses Provider to call the corresponding 
     // addTodo method in TodoModel, which handles adding and saving new task
     Navigator.of(context).push(
-      //TODO: this is a separate page that maybe should be it's own screen file, particularly if it gets more complicated
+      //TODO: this is a separate page that maybe should be its own screen file, particularly if it gets more complicated
       // e.g. if you also add some validation to not let you duplicate task names etc.
         new MaterialPageRoute(
             builder: (context) {
