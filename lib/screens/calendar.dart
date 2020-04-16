@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:calendar_strip/calendar_strip.dart';
-import 'package:todo_app/globals.dart' as globals;
-import 'package:todo_app/models/date_operations.dart';
+import 'package:Check_Yourself/globals.dart' as globals;
+import 'package:Check_Yourself/models/date_operations.dart';
 // import 'package:provider/provider.dart';
 // import '../models/todo_model.dart';
 

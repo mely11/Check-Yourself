@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/models/recur_list_model.dart';
-import 'package:todo_app/widgets/recur_list.dart';
-import 'package:todo_app/widgets/todo_list.dart';
+import 'package:Check_Yourself/models/recur_list_model.dart';
+import 'package:Check_Yourself/widgets/recur_list.dart';
 
 class EditRecuranceScreen extends StatefulWidget{
   @override

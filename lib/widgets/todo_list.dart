@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/widgets/todoItem.dart';
-import 'package:todo_app/models/task.dart';
+import 'package:Check_Yourself/widgets/todoItem.dart';
+import 'package:Check_Yourself/models/task.dart';
 
 class TodoList extends StatelessWidget {
   // This class constructs a TodoList

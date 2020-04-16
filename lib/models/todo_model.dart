@@ -2,9 +2,9 @@ import 'dart:collection';
 
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:todo_app/models/task.dart';
+import 'package:Check_Yourself/models/task.dart';
 import 'dart:convert';
-import 'package:todo_app/globals.dart' as globals;
+import 'package:Check_Yourself/globals.dart' as globals;
 
 
 class TodoModel extends ChangeNotifier {

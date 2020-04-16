@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/globals.dart' as globals;
-import 'package:todo_app/models/date_operations.dart';
-import 'package:todo_app/models/recur_list_model.dart';
-import 'package:todo_app/models/todo_model.dart';
-import 'package:todo_app/screens/edit_recurance_screen.dart';
+import 'package:Check_Yourself/globals.dart' as globals;
+import 'package:Check_Yourself/models/date_operations.dart';
+import 'package:Check_Yourself/models/recur_list_model.dart';
+import 'package:Check_Yourself/models/todo_model.dart';
+import 'package:Check_Yourself/screens/edit_recurance_screen.dart';
 
 class OptionsScreen extends StatefulWidget{
   // This class creates a new options screen state as a stateful widget

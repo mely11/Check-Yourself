@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/models/recur_list_model.dart';
-import 'package:todo_app/models/task.dart';
+import 'package:Check_Yourself/models/recur_list_model.dart';
+import 'package:Check_Yourself/models/task.dart';
 
 
 class RecurItem extends StatelessWidget {

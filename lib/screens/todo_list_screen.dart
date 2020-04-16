@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/models/todo_model.dart';
+import 'package:Check_Yourself/models/todo_model.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/screens/calendar.dart';
-import 'package:todo_app/screens/options_screen.dart';
-import 'package:todo_app/widgets/todo_list.dart';
-import 'package:todo_app/models/task.dart';
-import 'package:todo_app/globals.dart' as globals;
+import 'package:Check_Yourself/screens/calendar.dart';
+import 'package:Check_Yourself/screens/options_screen.dart';
+import 'package:Check_Yourself/widgets/todo_list.dart';
+import 'package:Check_Yourself/models/task.dart';
+import 'package:Check_Yourself/globals.dart' as globals;
 
 
 class TodoListScreen extends StatefulWidget{
@@ -73,7 +73,8 @@ class TodoListScreenState extends State<TodoListScreen> {
     // creates/pops up a new page for adding a task and uses Provider to call the corresponding 
     // addTodo method in TodoModel, which handles adding and saving new task
     Navigator.of(context).push(
-      //TODO: this is a separate page that maybe should be its own screen file, particularly if it gets more complicated
+      //TO DO: this is a separate page that maybe should be its own screen file, 
+      // nparticularly if it gets more complicated
       // e.g. if you also add some validation to not let you duplicate task names etc.
         new MaterialPageRoute(
             builder: (context) {
