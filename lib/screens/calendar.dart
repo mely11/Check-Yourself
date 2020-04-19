@@ -17,9 +17,9 @@ class CalendarScreenState extends State<Calendar> {
   DateTime endDate = DateTime.now().add(Duration(days: 15));
   DateTime selectedDate = DateTime.now().subtract(Duration(days: 2));
   List<DateTime> markedDates = [
+    DateTime.now(),
     DateTime.now().subtract(Duration(days: 1)),
-    DateTime.now().subtract(Duration(days: 2)),
-    DateTime.now().add(Duration(days: 4))
+    DateTime.now().add(Duration(days: 1))
   ];
 
   onSelect(data) {
