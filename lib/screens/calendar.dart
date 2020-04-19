@@ -1,3 +1,4 @@
+import 'package:Check_Yourself/models/todo_model.dart';
 import 'package:flutter/material.dart';
 import 'package:calendar_strip/calendar_strip.dart';
 import 'package:Check_Yourself/globals.dart' as globals;
@@ -115,7 +116,11 @@ class CalendarScreenState extends State<Calendar> {
             monthNameWidget: _monthNameWidget,
             markedDates: markedDates,
             containerDecoration: BoxDecoration(color: Colors.black12),
-          )),
+          )
+          //child: TodoModel(
+
+          //)
+        ),
     );
   }
 }
