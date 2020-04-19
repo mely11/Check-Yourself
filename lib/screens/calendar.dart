@@ -13,8 +13,8 @@ class Calendar extends StatefulWidget{
 
 class CalendarScreenState extends State<Calendar> {
   // This class sets up a calendar state 
-  DateTime startDate = DateTime.now().subtract(Duration(days: 2));
-  DateTime endDate = DateTime.now().add(Duration(days: 2));
+  DateTime startDate = DateTime.now().subtract(Duration(days: 15));
+  DateTime endDate = DateTime.now().add(Duration(days: 15));
   DateTime selectedDate = DateTime.now().subtract(Duration(days: 2));
   List<DateTime> markedDates = [
     DateTime.now().subtract(Duration(days: 1)),
