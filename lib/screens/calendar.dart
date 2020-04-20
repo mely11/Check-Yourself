@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:calendar_strip/calendar_strip.dart';
 import 'package:Check_Yourself/globals.dart' as globals;
 import 'package:Check_Yourself/models/date_operations.dart';
-// import 'package:provider/provider.dart';
-// import '../models/todo_model.dart';
+import 'package:provider/provider.dart';
+import '../models/todo_model.dart';
 
 class Calendar extends StatefulWidget{
   // This class creates a new calendar screen state as a stateful widget
@@ -29,10 +29,12 @@ class CalendarScreenState extends State<Calendar> {
     String selectedDate = DateOperations().getStringDate(data);
     globals.setDate = selectedDate;
     print("Selected Date -> $data");
-    // if (selectedDate != DateOperations().getCurrentDate) {
-      // Provider.of<TodoModel> (context, listen: false).refreshAll();
-    // }
-    
+    print(DateOperations().getCurrentDate());
+    if (selectedDate != DateOperations().getCurrentDate) {
+      Provider:
+        ChangeNotifierProvider (create: (context) => TodoModel());
+        //of<TodoModel> (context, listen: false).refreshAll();
+    }  
   }
 
   _monthNameWidget(monthName) {
