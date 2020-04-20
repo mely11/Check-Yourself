@@ -1,4 +1,4 @@
-// import 'package:Check_Yourself/models/todo_model.dart';
+import 'package:Check_Yourself/models/todo_model.dart';
 import 'package:flutter/material.dart';
 import 'package:calendar_strip/calendar_strip.dart';
 import 'package:Check_Yourself/globals.dart' as globals;
@@ -14,9 +14,9 @@ class Calendar extends StatefulWidget{
 
 class CalendarScreenState extends State<Calendar> {
   // This class sets up a calendar state 
-  DateTime startDate = DateTime.now().subtract(Duration(days: 15));
-  DateTime endDate = DateTime.now().add(Duration(days: 15));
-  DateTime selectedDate = DateTime.now().subtract(Duration(days: 2));
+  DateTime startDate = DateTime.now().subtract(Duration(days: 30));
+  DateTime endDate = DateTime.now().add(Duration(days: 30));
+  DateTime selectedDate = DateTime.now();
   List<DateTime> markedDates = [
     DateTime.now(),
     DateTime.now().subtract(Duration(days: 1)),
@@ -32,7 +32,7 @@ class CalendarScreenState extends State<Calendar> {
     print(DateOperations().getCurrentDate());
     if (selectedDate != DateOperations().getCurrentDate) {
       Provider:
-        ChangeNotifierProvider (create: (context) => TodoModel());
+        ChangeNotifierProvider (create: (context) => TodoModel()); 
         //of<TodoModel> (context, listen: false).refreshAll();
     }  
   }
