@@ -19,10 +19,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="517" placeholderIntrinsicHeight="1200" image="LaunchImage" highlightedImage="LaunchImage" highlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-k0-Ey4">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" red="0.78392894040000005" green="0.95333738310000005" blue="0.99542584199999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="tintColor" red="0.78392894040000005" green="0.95333738310000005" blue="0.99542584199999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <imageView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.52000000000000002" contentMode="scaleAspectFit" misplaced="YES" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-k0-Ey4">
+                                <rect key="frame" x="-77" y="-56" width="585" height="1003"/>
+                                <color key="backgroundColor" red="0.49575028056405185" green="0.81327981853360753" blue="0.91374272109999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.54103213549999996" green="0.82958745960000002" blue="0.92158466579999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="small" weight="ultraLight">
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 </preferredSymbolConfiguration>
@@ -40,7 +40,7 @@
             <point key="canvasLocation" x="76.811594202898561" y="251.11607142857142"/>
         </scene>
     </scenes>
-    <color key="tintColor" red="0.78392894040000005" green="0.95333738310000005" blue="0.99542584199999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+    <color key="tintColor" red="0.68754707640000001" green="0.91982629950000006" blue="0.96130555870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
         <image name="LaunchImage" width="706" height="1486"/>
     </resources>
