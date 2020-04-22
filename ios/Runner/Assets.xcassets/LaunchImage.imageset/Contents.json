@@ -1,13 +1,44 @@
 {
   "images" : [
     {
-      "idiom" : "universal"
+      "filename" : "29.png",
+      "idiom" : "iphone",
+      "scale" : "1x"
     },
     {
-      "filename" : "LaunchImage.png",
-      "idiom" : "universal",
-      "scale" : "1x",
-      "unassigned" : true
+      "filename" : "114.png",
+      "idiom" : "iphone",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "120.png",
+      "idiom" : "iphone",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "20.png",
+      "idiom" : "ipad",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "100.png",
+      "idiom" : "ipad",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "58.png",
+      "idiom" : "watch",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "128.png",
+      "idiom" : "mac",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "1024.png",
+      "idiom" : "mac",
+      "scale" : "2x"
     }
   ],
   "info" : {
