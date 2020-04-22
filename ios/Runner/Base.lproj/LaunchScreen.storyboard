@@ -19,14 +19,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="scaleAspectFit" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-k0-Ey4">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" red="0.052411659504544031" green="0.59367189995550806" blue="0.830581054834715" alpha="0.92027948943661975" colorSpace="custom" customColorSpace="displayP3"/>
+                            <imageView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="scaleAspectFit" misplaced="YES" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-k0-Ey4">
+                                <rect key="frame" x="-9" y="-45" width="432" height="987"/>
+                                <color key="backgroundColor" red="0.052411659499999999" green="0.59367190000000003" blue="0.8305810548" alpha="0.92027948940000004" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" red="0.54103213549999996" green="0.82958745960000002" blue="0.92158466579999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="Wql-BG-mCr"/>
-                                    <constraint firstAttribute="height" constant="896" id="cDw-HU-mAM"/>
-                                </constraints>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="small" weight="ultraLight">
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 </preferredSymbolConfiguration>
@@ -34,8 +30,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1a2-6s-vTC"/>
-                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="4X2-HB-R7a"/>
+                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-29" id="64t-4R-0iA"/>
+                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Cds-7K-Rkw"/>
+                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="NAQ-5P-SgG"/>
+                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" constant="-89" id="eJI-QN-3De"/>
                         </constraints>
                     </view>
                 </viewController>
