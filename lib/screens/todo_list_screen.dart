@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:Check_Yourself/models/todo_model.dart';
 import 'package:provider/provider.dart';
-import 'package:Check_Yourself/screens/calendar.dart';
-import 'package:Check_Yourself/screens/options_screen.dart';
-import 'package:Check_Yourself/widgets/todo_list.dart';
-import 'package:Check_Yourself/models/task.dart';
-import 'package:Check_Yourself/globals.dart' as globals;
+import '../screens/calendar.dart';
+import '../screens/options_screen.dart';
+import '../widgets/todo_list.dart';
+import '../models/task.dart';
+import '../globals.dart' as globals;
 
 
 class TodoListScreen extends StatefulWidget{

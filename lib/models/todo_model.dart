@@ -1,11 +1,9 @@
 import 'dart:collection';
-
+import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:Check_Yourself/models/task.dart';
-import 'dart:convert';
-import 'package:Check_Yourself/globals.dart' as globals;
-
+import '../globals.dart' as globals;
+import '../models/task.dart';
 
 class TodoModel extends ChangeNotifier {
   // This class is a TodoModel that gets an unmodifiable list view of 
@@ -30,9 +28,9 @@ class TodoModel extends ChangeNotifier {
   }
 
   void addTodo(Task task) {
-    // adds a todoTask into _todoItems, 
-    // saves added data, and notifies 
-    // the listeners 
+    // This method adds a todoTask into 
+    // _todoItems, saves added data, and 
+    // notifies the listeners 
     _todoItems.add(task);
     notifyListeners();
     _saveTodoData();

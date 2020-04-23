@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:Check_Yourself/models/recur_list_model.dart';
-import 'package:Check_Yourself/widgets/recur_list.dart';
+import '../widgets/recur_list.dart';
+import '../models/recur_list_model.dart';
 
 class EditRecuranceScreen extends StatefulWidget{
   @override
@@ -9,9 +9,10 @@ class EditRecuranceScreen extends StatefulWidget{
 }
 
 class EditRecurScreenState extends State<EditRecuranceScreen>{
-
+  // This class controls the edit-recur screen state
 
   Widget _buildRecurTaskList(BuildContext context){
+    // This build recurList consisting of recurItems
     return Consumer<RecurListModel>(
       builder: (context, recurs, child) => RecurList(recurItems: recurs.recurItems)
     );
@@ -26,7 +27,5 @@ class EditRecurScreenState extends State<EditRecuranceScreen>{
         ),
         body: _buildRecurTaskList(context),
     );
-
   }
-
 }

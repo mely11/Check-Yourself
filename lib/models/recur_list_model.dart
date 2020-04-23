@@ -1,11 +1,11 @@
 import 'dart:collection';
 import 'dart:convert';
-import 'package:Check_Yourself/models/task.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../models/task.dart';
 
 class RecurListModel extends ChangeNotifier {
-
+  // This class @andrew :D
   List<Task> _recurItems = [];
   String reKey = 'allRecur';
 

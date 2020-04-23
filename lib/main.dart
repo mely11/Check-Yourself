@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'globals.dart' as globals;
 import 'package:Check_Yourself/models/date_operations.dart';
 import 'package:Check_Yourself/models/recur_list_model.dart';
 import 'package:Check_Yourself/screens/todo_list_screen.dart';
-import 'package:provider/provider.dart';
 import 'package:Check_Yourself/models/todo_model.dart';
-import 'globals.dart' as globals;
+
 
 void main() {
-  // main function that sets current date and calls upon MyApp
+  // This is the main function that sets the current date and calls upon MyApp
   globals.setDate = DateOperations().getCurrentDate();
   globals.weekDay = DateTime.now().weekday;
   runApp(
@@ -22,7 +23,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // Creates and builds the app/TodoListScreen 
+  // This class creates and builds the app/TodoListScreen 
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -31,22 +32,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-// plz ignore this part
-// TODO 
-// theme: ThemeData(
-// primarySwatch: Colors.lightBlue,
-// textTheme: TextTheme(
-// body2: TextStyle(color: Colors.white60, fontSize: 21.0),
-// display1: TextStyle(color: Colors.black87, fontSize: 37.0),
-// caption: TextStyle(
-//   color: Colors.white,
-//   fontSize: 14.0,
-//   fontWeight: FontWeight.bold),
-//   subhead: TextStyle(color: Colors.black45, fontSize: 12.0),
-// )),

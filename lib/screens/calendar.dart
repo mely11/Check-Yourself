@@ -1,10 +1,9 @@
-import 'package:Check_Yourself/models/todo_model.dart';
 import 'package:flutter/material.dart';
-import 'package:calendar_strip/calendar_strip.dart';
-import 'package:Check_Yourself/globals.dart' as globals;
-import 'package:Check_Yourself/models/date_operations.dart';
 import 'package:provider/provider.dart';
+import 'package:calendar_strip/calendar_strip.dart';
 import '../models/todo_model.dart';
+import '../globals.dart' as globals;
+import '../models/date_operations.dart';
 
 class Calendar extends StatefulWidget{
   // This class creates a new calendar screen state as a stateful widget

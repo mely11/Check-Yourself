@@ -6,7 +6,8 @@ class Task {
   bool done;
   bool recurs;
 
-  Task({@required this.name, this.done = false});  // task object constructor
+  // task object constructor
+  Task({@required this.name, this.done = false});  
 
   Task.fromJson(Map<String, dynamic> json) 
   // fromJson method constructs a new Task instance from a map structure
