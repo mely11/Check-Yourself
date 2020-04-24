@@ -105,7 +105,7 @@ class CalendarScreenState extends State<Calendar> {
     // build method builds the calendar
     return Scaffold(
       appBar: AppBar(
-        title: Text('Calender'),
+        title: Text('Calendar'),
       ),
       body: Container(
           child: CalendarStrip(
