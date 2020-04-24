@@ -4,7 +4,6 @@ class Task {
   // This class constructs task objects along with their methods 
   String name;
   bool done;
-  bool recurs;
 
   // task object constructor
   Task({@required this.name, this.done = false});  
@@ -13,8 +12,7 @@ class Task {
   // fromJson method constructs a new Task instance from a map structure
   // and allows json.decode method to decode fromJson and convert back
       : name = json['name'],
-        done = json['done'],
-        recurs = json['recurs'];
+        done = json['done'];
 
   Map<String, dynamic> toJson() => 
   // toJson method converts a Task instance into a map and allows 
@@ -23,7 +21,6 @@ class Task {
       {
         'name' : name,
         'done' : done,
-        'recurs' : recurs,
       };
 
   void toggleDone() { 

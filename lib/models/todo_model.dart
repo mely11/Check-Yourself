@@ -4,6 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../globals.dart' as globals;
 import '../models/task.dart';
+import'../screens/add_todo_screen.dart';
+import '../widgets/recur_list.dart';
+import '../widgets/recur_list.dart';
+import 'recur_list_model.dart';
+import 'recur_list_model.dart';
+import 'task.dart';
 
 class TodoModel extends ChangeNotifier {
   // This class is a TodoModel that gets an unmodifiable list view of 
@@ -12,6 +18,8 @@ class TodoModel extends ChangeNotifier {
   // listeners the related changes
   List<Task> _todoItems = [];
   String keyDate = globals.setDate;
+  String currTask = AddTodoScreenState().typedname;
+
 
   UnmodifiableListView<Task> get todoItems => UnmodifiableListView(_todoItems);
 
@@ -113,6 +121,48 @@ class TodoModel extends ChangeNotifier {
     if (today == 7) { return prefs.getStringList('sunday');}
     else {return null;}
 
+  }
+  Future checkfrequency()async{
+    final prefs = await SharedPreferences.getInstance();
+    if (globals.dailyvalue=true) {
+      prefs.getStringList('daily').add(currTask);
+      prefs.getStringList('allrecur').add(currTask);
+
+    }
+    if (globals.mondayvalue==true) {
+      prefs.getStringList('monday').add(currTask.toString());
+      prefs.getStringList('allrecur').add(currTask);
+      notifyListeners();
+      print(prefs.getStringList('monday').toString());
+
+    }
+    if (globals.tuesdayvalue==true) {
+      prefs.getStringList('tuesday').add(currTask);
+      prefs.getStringList('allrecur').add(currTask);
+    }
+    if (globals.wednesdayvalue==true) {
+      prefs.getStringList('wednesday').add(currTask);
+      prefs.getStringList('allrecur').add(currTask);
+    }
+    if (globals.thursdayvalue==true) {
+      prefs.getStringList('thursday').add(currTask);
+      prefs.getStringList('allrecur').add(currTask);
+    }
+    if (globals.fridayvalue==true) {
+      prefs.getStringList('friday').add(currTask);
+      prefs.getStringList('allrecur').add(currTask);
+    }
+    if (globals.saturdayvalue==true) {
+      prefs.getStringList('saturday').add(currTask);
+      prefs.getStringList('allrecur').add(currTask);
+    }
+    if (globals.sundayvalue==true) {
+      prefs.getStringList('sunday').add(currTask);
+      prefs.getStringList('allrecur').add(currTask);
+    }
+    else{
+      print('lol this did nothing sorry *testing purposes*');
+    }
   }
 
   void refreshAll (){

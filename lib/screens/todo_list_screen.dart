@@ -6,6 +6,7 @@ import '../screens/options_screen.dart';
 import '../widgets/todo_list.dart';
 import '../models/task.dart';
 import '../globals.dart' as globals;
+import '../screens/add_todo_screen.dart';
 
 
 class TodoListScreen extends StatefulWidget{
@@ -30,14 +31,14 @@ class TodoListScreenState extends State<TodoListScreen> {
         title: new Text('Todo List: '+globals.setDate),
         actions: <Widget>[
           IconButton(
+              onPressed: _gotoAddTodo,
+              tooltip: 'Add task',
+              icon: Icon(Icons.library_add, size:30.0)
+          ),
+          IconButton(
             onPressed: _gotoCalendar,
             tooltip: 'Open Calendar',
             icon: Icon(Icons.calendar_today,),
-          ),
-          IconButton(
-              onPressed: _pushAddToDo,
-              tooltip: 'Add task',
-              icon: Icon(Icons.library_add, size:30.0)
           ),
           IconButton(
             onPressed: _gotoOptions,
@@ -68,32 +69,39 @@ class TodoListScreenState extends State<TodoListScreen> {
           ,)
     );
   }
-
-  void _pushAddToDo() {
-    // creates/pops up a new page for adding a task and uses Provider to call the corresponding 
-    // addTodo method in TodoModel, which handles adding and saving new task
+  void _gotoAddTodo(){
+    // Creates a calendar and pushes to the calendar page
     Navigator.of(context).push(
-      //TO DO: this is a separate page that maybe should be its own screen file, 
-      // nparticularly if it gets more complicated
-      // e.g. if you also add some validation to not let you duplicate task names etc.
-        new MaterialPageRoute(
-            builder: (context) {
-              return new Scaffold(
-                  appBar: new AppBar(title: new Text('add a task')
-                  ),
-                  body: new TextField(
-                    autofocus: true,
-                    onSubmitted: (val) {
-                      Provider.of<TodoModel>(context, listen:false).addTodo(Task(name: val));
-                      Navigator.pop(context);
-                    },
-                    decoration: new InputDecoration(
-                        hintText: "What do you want to accomplish?",
-                        contentPadding: const EdgeInsets.all(15.0)
-                    ),
-                  )
-              );
-            })
+        new MaterialPageRoute(builder: (context) => AddTodoScreen()
+          ,)
     );
   }
+
+//  void _pushAddToDo() {
+//    // creates/pops up a new page for adding a task and uses Provider to call the corresponding
+//    // addTodo method in TodoModel, which handles adding and saving new task
+//    Navigator.of(context).push(
+//      //TO DO: this is a separate page that maybe should be its own screen file,
+//      // nparticularly if it gets more complicated
+//      // e.g. if you also add some validation to not let you duplicate task names etc.
+//        new MaterialPageRoute(
+//            builder: (context) {
+//              return new Scaffold(
+//                  appBar: new AppBar(title: new Text('add a task')
+//                  ),
+//                  body: new TextField(
+//                    autofocus: true,
+//                    onSubmitted: (val) {
+//                      Provider.of<TodoModel>(context, listen:false).addTodo(Task(name: val));
+//                      Navigator.pop(context);
+//                    },
+//                    decoration: new InputDecoration(
+//                        hintText: "What do you want to accomplish?",
+//                        contentPadding: const EdgeInsets.all(15.0)
+//                    ),
+//                  )
+//              );
+//            })
+//    );
+//  }
 }
