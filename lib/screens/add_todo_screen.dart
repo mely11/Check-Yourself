@@ -277,5 +277,5 @@ class AddTodoScreenState extends State<AddTodoScreen> {
       print('added to recur model');
     }
   }
-  
+
 }
