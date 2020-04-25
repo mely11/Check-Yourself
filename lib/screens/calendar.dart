@@ -15,25 +15,21 @@ class CalendarScreenState extends State<Calendar> {
   // This class sets up a calendar state 
   DateTime startDate = DateTime.now().subtract(Duration(days: 30));
   DateTime endDate = DateTime.now().add(Duration(days: 30));
-  DateTime selectedDate = DateTime.now();
+  DateTime selectedDate = globals.setDate;
   List<DateTime> markedDates = [
     DateTime.now(),
     DateTime.now().subtract(Duration(days: 1)),
     DateTime.now().add(Duration(days: 1))
   ];
 
-  onSelect(data) {
+  onSelect(DateTime data) {
     // onSelect method reassigns the global 'setDate' variable, 
     // updates the todo list screen, and returns the user to said screen
-    String selectedDate = DateOperations().getStringDate(data);
-    globals.setDate = selectedDate;
-    print("Selected Date -> $data");
-    print(DateOperations().getCurrentDate());
-    if (selectedDate != DateOperations().getCurrentDate) {
-      Provider:
-        ChangeNotifierProvider (create: (context) => TodoModel()); 
-        //of<TodoModel> (context, listen: false).refreshAll();
-    }  
+    globals.weekDay = data.weekday;
+    globals.setDate = data;
+    this.selectedDate = data;
+    Provider.of<TodoModel> (context, listen: false).refreshAll();
+    Navigator.of(context).pop();
   }
 
   _monthNameWidget(monthName) {
@@ -111,6 +107,7 @@ class CalendarScreenState extends State<Calendar> {
           child: CalendarStrip(
             startDate: startDate,
             endDate: endDate,
+            selectedDate: selectedDate,
             onDateSelected: onSelect,
             dateTileBuilder: dateTileBuilder,
             iconColor: Colors.black87,
