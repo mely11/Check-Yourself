@@ -12,3 +12,5 @@ bool wednesdayvalue = false;
 bool thursdayvalue = false;
 bool fridayvalue = false;
 bool saturdayvalue = false;
+
+bool recurModelInit = false;

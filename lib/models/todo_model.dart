@@ -141,17 +141,18 @@ class TodoModel extends ChangeNotifier {
 
   }
 
-  void refreshAll (){
+  void refreshAll () async{
     // refreshes the page to contain an empty set of todoItem 
     // in the _todoItems list while notifying the listeners
     keyDate = DateOperations().getStringDate(globals.setDate);
     _todoItems = [];
-    _getTodoData().then((data) {
+    await _getTodoData().then((data) {
       _todoItems.addAll(
           data.map((i) => Task.fromJson(json.decode(i))).toList());
-      notifyListeners();
     }
     );
+    _saveTodoData();
+    notifyListeners();
   }
 
 

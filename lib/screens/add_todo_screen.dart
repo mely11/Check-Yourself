@@ -185,6 +185,7 @@ class AddTodoScreenState extends State<AddTodoScreen> {
     Task currTask = new Task(name: taskName);
     String encodedCurrTask = json.encode(currTask.toJson());
     final prefs = await SharedPreferences.getInstance();
+    globals.recurModelInit = true;
     if (globals.dailyvalue==true) {
       List<String> recurList = prefs.getStringList('daily');
       if (recurList == null){
@@ -269,34 +270,12 @@ class AddTodoScreenState extends State<AddTodoScreen> {
     if (allRecur == null){
       allRecur = [];
     }
-    if (allRecur.contains(encodedTask)){
-      return;
-    }
-    else {
+    if (!allRecur.contains(encodedTask)){
       allRecur.add(encodedTask);
       prefs.setStringList('allRecur', allRecur);
       Provider.of<RecurListModel>(context, listen: false).refreshAll();
       print('added to recur model');
     }
   }
-
-//  Widget add_todo(BuildContext context) {
-//    return new Scaffold(
-//        appBar: new AppBar(title: new Text('add a task')
-//        ),
-//        body: new TextField(
-//          autofocus: true,
-//          onSubmitted: (val) {
-//            Provider.of<TodoModel>(context, listen: false).addTodo(
-//                Task(name: val));
-//            typedname = val;
-//            Navigator.pop(context);
-//          },
-//          decoration: new InputDecoration(
-//              hintText: "What do you want to accomplish?",
-//              contentPadding: const EdgeInsets.all(15.0)
-//          ),
-//        )
-//    );
-//  }
+  
 }

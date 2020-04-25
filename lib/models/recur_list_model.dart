@@ -14,11 +14,13 @@ class RecurListModel extends ChangeNotifier {
   UnmodifiableListView<Task> get recurItems => UnmodifiableListView(_recurItems);
 
   RecurListModel() {
-    _getRecurData(reKey).then((data) {
-      _recurItems.addAll(
-          data.map((i) => Task.fromJson(json.decode(i))).toList());
-      notifyListeners();
-    });
+    if (globals.recurModelInit == false) {
+      _getRecurData(reKey).then((data) {
+        _recurItems.addAll(
+            data.map((i) => Task.fromJson(json.decode(i))).toList());
+        notifyListeners();
+      });
+    }
   }
 
 
@@ -28,13 +30,13 @@ class RecurListModel extends ChangeNotifier {
     _saveRecurData(reKey, _recurItems);
   }
 
-  void removeRecur(Task task) {
+  void removeRecur(Task task) async {
     // removes a todoTask, saves removed
     // data, and notifies the listeners
     _recurItems.remove(task);
     notifyListeners();
     _saveRecurData(reKey, _recurItems);
-    _deleteAllRecurance(task);
+    _deleteAllRecurance(json.encode(task.toJson()));
   }
 
 
@@ -57,19 +59,23 @@ class RecurListModel extends ChangeNotifier {
     }
   }
 
-  void _deleteAllRecurance(Task task) {
+  void _deleteAllRecurance(String task) async {
+    final prefs = await SharedPreferences.getInstance();
     List<String> keys = ['daily', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-    List<Task> tasks = [];
+    List<String> tasks = [];
     for (var key in keys){
-      _getRecurData(key).then((data) {
-        tasks.addAll(
-            data.map((i) => Task.fromJson(json.decode(i))).toList());
+      tasks = prefs.getStringList(key);
+      if (tasks != null) {
+        print('here are the tasks before');
+        print(tasks);
+        tasks.remove(task);
+        print('here are the tasks after');
+        print(tasks);
+        prefs.setStringList(key, tasks);
+        tasks.clear();
       }
-      );
-      tasks.remove(task);
-      _saveRecurData(key, tasks);
-      tasks.clear();
     }
+    print ('all recurrances deleted');
   }
 
   void refreshAll(){
@@ -80,5 +86,6 @@ class RecurListModel extends ChangeNotifier {
       notifyListeners();
     });
   }
+
 
 }
