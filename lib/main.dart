@@ -9,7 +9,7 @@ import 'package:Check_Yourself/models/todo_model.dart';
 
 void main() {
   // This is the main function that sets the current date and calls upon MyApp
-  globals.setDate = DateOperations().getCurrentDate();
+  globals.setDate = DateTime.now();
   globals.weekDay = DateTime.now().weekday;
   runApp(
     MultiProvider(

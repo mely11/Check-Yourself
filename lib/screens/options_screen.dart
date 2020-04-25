@@ -86,7 +86,7 @@ class OptionsScreenState extends State<OptionsScreen>{
     final prefs = await SharedPreferences.getInstance();
     prefs.clear();
     print ('data deleted');
-    globals.setDate = DateOperations().getCurrentDate();
+    globals.setDate = DateTime.now();
     Provider.of<TodoModel> (context, listen: false).refreshAll();
     Provider.of<RecurListModel> (context, listen:false).refreshAll();
     Navigator.of(context).pop();

@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../globals.dart' as globals;
 import '../models/task.dart';
-import'../screens/add_todo_screen.dart';
+import '../models/date_operations.dart';
 import '../widgets/recur_list.dart';
 import '../widgets/recur_list.dart';
 import 'recur_list_model.dart';
@@ -17,8 +17,7 @@ class TodoModel extends ChangeNotifier {
   // methods that manipulates todoItems, saves changed data, and notifies 
   // listeners the related changes
   List<Task> _todoItems = [];
-  String keyDate = globals.setDate;
-  String currTask = AddTodoScreenState().typedname;
+  String keyDate = DateOperations().getStringDate(globals.setDate);
 
 
   UnmodifiableListView<Task> get todoItems => UnmodifiableListView(_todoItems);
@@ -97,22 +96,41 @@ class TodoModel extends ChangeNotifier {
 
   Future<List<String>> _loadRecurrences() async{
     final prefs = await SharedPreferences.getInstance();
-    final dailyRecur = prefs.getStringList('daily');
+    List<String> dailyRecur = prefs.getStringList('daily');
     List<String> weekDayRecur;
-    _loadDailyRecurrences().then((data) {
+    await _loadDailyRecurrences().then((data) {
       weekDayRecur = data;
+      print(weekDayRecur);
     });
-    final totalRecur = (weekDayRecur == null) ? dailyRecur: (dailyRecur+weekDayRecur);
-    if (totalRecur != null){
+    if (weekDayRecur == null){
+      print ('I guess its null now!');
+      if (dailyRecur == null){
+        return [];
+      }
+      else{
+        print ('just daily');
+        return dailyRecur;}
+    }
+    else{
+      print ('weekDay not null');
+      List<String> totalRecur = [];
+      if (dailyRecur != null){
+        totalRecur.addAll(dailyRecur);
+        print (totalRecur);
+      }
+      totalRecur.addAll(weekDayRecur);
+      print ('the total recur:');
+      print (totalRecur);
       return totalRecur;
     }
-    else {return [];}
   }
 
   Future<List<String>> _loadDailyRecurrences() async{
     final prefs = await SharedPreferences.getInstance();
     int today = globals.weekDay;
-    if (today == 1) { return prefs.getStringList('monday');}
+    if (today == 1) {
+      print (prefs.getStringList('monday'));
+      return prefs.getStringList('monday');}
     if (today == 2) { return prefs.getStringList('tuesday');}
     if (today == 3) { return prefs.getStringList('wednesday');}
     if (today == 4) { return prefs.getStringList('thursday');}
@@ -122,53 +140,11 @@ class TodoModel extends ChangeNotifier {
     else {return null;}
 
   }
-  Future checkfrequency()async{
-    final prefs = await SharedPreferences.getInstance();
-    if (globals.dailyvalue=true) {
-      prefs.getStringList('daily').add(currTask);
-      prefs.getStringList('allrecur').add(currTask);
-
-    }
-    if (globals.mondayvalue==true) {
-      prefs.getStringList('monday').add(currTask.toString());
-      prefs.getStringList('allrecur').add(currTask);
-      notifyListeners();
-      print(prefs.getStringList('monday').toString());
-
-    }
-    if (globals.tuesdayvalue==true) {
-      prefs.getStringList('tuesday').add(currTask);
-      prefs.getStringList('allrecur').add(currTask);
-    }
-    if (globals.wednesdayvalue==true) {
-      prefs.getStringList('wednesday').add(currTask);
-      prefs.getStringList('allrecur').add(currTask);
-    }
-    if (globals.thursdayvalue==true) {
-      prefs.getStringList('thursday').add(currTask);
-      prefs.getStringList('allrecur').add(currTask);
-    }
-    if (globals.fridayvalue==true) {
-      prefs.getStringList('friday').add(currTask);
-      prefs.getStringList('allrecur').add(currTask);
-    }
-    if (globals.saturdayvalue==true) {
-      prefs.getStringList('saturday').add(currTask);
-      prefs.getStringList('allrecur').add(currTask);
-    }
-    if (globals.sundayvalue==true) {
-      prefs.getStringList('sunday').add(currTask);
-      prefs.getStringList('allrecur').add(currTask);
-    }
-    else{
-      print('lol this did nothing sorry *testing purposes*');
-    }
-  }
 
   void refreshAll (){
     // refreshes the page to contain an empty set of todoItem 
     // in the _todoItems list while notifying the listeners
-    keyDate = globals.setDate;
+    keyDate = DateOperations().getStringDate(globals.setDate);
     _todoItems = [];
     _getTodoData().then((data) {
       _todoItems.addAll(

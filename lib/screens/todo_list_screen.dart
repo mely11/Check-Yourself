@@ -7,6 +7,7 @@ import '../widgets/todo_list.dart';
 import '../models/task.dart';
 import '../globals.dart' as globals;
 import '../screens/add_todo_screen.dart';
+import '../models/date_operations.dart';
 
 
 class TodoListScreen extends StatefulWidget{
@@ -28,7 +29,7 @@ class TodoListScreenState extends State<TodoListScreen> {
     // builds all the buttons with their actions as well as the todoList
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Todo List: '+globals.setDate),
+        title: new Text('Todo List: '+DateOperations().getStringDate(globals.setDate)),
         actions: <Widget>[
           IconButton(
               onPressed: _gotoAddTodo,
@@ -62,12 +63,15 @@ class TodoListScreenState extends State<TodoListScreen> {
     });
   }
 
-  void _gotoCalendar(){
+  void _gotoCalendar() async{
     // Creates a calendar and pushes to the calendar page
-    Navigator.of(context).push(
+    await Navigator.of(context).push(
         new MaterialPageRoute(builder: (context) => Calendar()
           ,)
     );
+    setState(() {
+      build(context);
+    });
   }
   void _gotoAddTodo(){
     // Creates a calendar and pushes to the calendar page
