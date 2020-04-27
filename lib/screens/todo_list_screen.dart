@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:Check_Yourself/models/todo_model.dart';
 import 'package:provider/provider.dart';
-import '../screens/calendar.dart';
-import '../screens/options_screen.dart';
+import 'calendar.dart';
+import 'options_screen.dart';
+import 'add_todo_screen.dart';
+import '../models/todo_model.dart';
 import '../widgets/todo_list.dart';
 import '../globals.dart' as globals;
-import '../screens/add_todo_screen.dart';
 import '../models/date_operations.dart';
 
 
@@ -26,7 +26,9 @@ class TodoListScreenState extends State<TodoListScreen> {
   @override
   Widget build(BuildContext context){
     // builds all the buttons with their actions as well as the todoList
+   Color iconColor = const Color.fromARGB(0xFE, 0xFE, 0xFE, 0xFE); 
     return new Scaffold(
+      backgroundColor: iconColor,
       appBar: new AppBar(
         title: new Text('Todo List: '+DateOperations().getStringDate(globals.setDate)),
         actions: <Widget>[

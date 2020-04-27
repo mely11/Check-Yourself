@@ -3,8 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../globals.dart' as globals;
-import '../models/task.dart';
-import '../models/date_operations.dart';
+import 'date_operations.dart';
 import 'task.dart';
 
 class TodoModel extends ChangeNotifier {
@@ -14,7 +13,6 @@ class TodoModel extends ChangeNotifier {
   // listeners the related changes
   List<Task> _todoItems = [];
   String keyDate = DateOperations().getStringDate(globals.setDate);
-
 
   UnmodifiableListView<Task> get todoItems => UnmodifiableListView(_todoItems);
 
@@ -91,6 +89,12 @@ class TodoModel extends ChangeNotifier {
   }
 
   Future<List<String>> _loadRecurrences() async{
+    // loads the recurrences using await and loadDailyRecurrences 
+    // if theweekDayRecur is null and dailyRecur is not null,
+    // then the recur items are daily recurrences, so adds them
+    // into a newly-created totalRecur list of strings; otherwise, 
+    // they recurred in particular weekday(s) so we add the 
+    // corresponding weekDayRecur into totalRecur
     final prefs = await SharedPreferences.getInstance();
     List<String> dailyRecur = prefs.getStringList('daily');
     List<String> weekDayRecur;
@@ -122,11 +126,11 @@ class TodoModel extends ChangeNotifier {
   }
 
   Future<List<String>> _loadDailyRecurrences() async{
+    // loads the daily recurrences by setting today as an integer 
+    // and returns the corresponding string list of that day
     final prefs = await SharedPreferences.getInstance();
     int today = globals.weekDay;
-    if (today == 1) {
-      print (prefs.getStringList('monday'));
-      return prefs.getStringList('monday');}
+    if (today == 1) { return prefs.getStringList('monday');}
     if (today == 2) { return prefs.getStringList('tuesday');}
     if (today == 3) { return prefs.getStringList('wednesday');}
     if (today == 4) { return prefs.getStringList('thursday');}
@@ -150,6 +154,5 @@ class TodoModel extends ChangeNotifier {
     _saveTodoData();
     notifyListeners();
   }
-
 
 }

@@ -6,6 +6,7 @@ class TodoList extends StatelessWidget {
   // This class constructs a TodoList
   final List<Task> todoItems;
 
+  // This is a constructor of TodoList
   TodoList({@required this.todoItems});
 
   @override

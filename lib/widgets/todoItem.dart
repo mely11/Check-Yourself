@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:Check_Yourself/models/task.dart';
-import 'package:Check_Yourself/models/todo_model.dart';
-
+import '../models/task.dart';
+import '../models/todo_model.dart';
 
 class TodoItem extends StatelessWidget {
   // This class creates a todoItem, including its properties
   final Task task;
   
-  TodoItem({@required this.task}); // the constuctor for a todoItem that requires a task
+  // the constuctor for a todoItem that requires a task
+  TodoItem({@required this.task}); 
 
   @override
   Widget build(BuildContext context) {
-    // builds the todoItem
+    // builds the todoItem using a new CheckboxListTile where the task.done's value
+    // is set to be true/false using toggleDone method in the TodoModel, builds a
+    // red IconButton that appears on the side of the CheckboxListTile, and change
+    // the decorations of the task.name using TextStyle which will make the string
+    // being crossed out (lined through) and appear greyer when toggled done.
     Color checkedColor = const Color.fromARGB(0xFF, 0x81, 0xA5, 0xF1);  // the color appears when this checkbox is checked
     Color iconColor = const Color.fromARGB(0xFE, 0xFE, 0xFE, 0xFE); 
     return new CheckboxListTile(

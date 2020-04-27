@@ -2,17 +2,18 @@ import 'dart:collection';
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../models/task.dart';
+import 'task.dart';
 import '../globals.dart' as globals;
 
 class RecurListModel extends ChangeNotifier {
-  // This class ~ :D
+  // This class builds and handles recur list model
   List<Task> _recurItems = [];
   String reKey = 'allRecur';
 
   UnmodifiableListView<Task> get recurItems => UnmodifiableListView(_recurItems);
 
   RecurListModel() {
+    // constructor for building the recurrence list model
     if (globals.recurModelInit == false) {
       _getRecurData(reKey).then((data) {
         _recurItems.addAll(
@@ -22,8 +23,9 @@ class RecurListModel extends ChangeNotifier {
     }
   }
 
-
   void removeRecurAtIndex(int index) {
+    // removes a recurItem at a specific index,
+    // saves removed data, and notifies the listeners
     _recurItems.removeAt(index);
     notifyListeners();
     _saveRecurData(reKey, _recurItems);
@@ -40,6 +42,7 @@ class RecurListModel extends ChangeNotifier {
 
 
   void _saveRecurData(String key, List<Task> data) async{
+    // save recurrence data as a list of encodedTasks strings
     final prefs = await SharedPreferences.getInstance();
     List<String> encodedTasks = data != null ? data.map(
             (i) => json.encode(i.toJson())).toList() : null;
@@ -48,6 +51,7 @@ class RecurListModel extends ChangeNotifier {
 
 
   Future<List<String>> _getRecurData(String key) async{
+    // grabs the recurrence data 
     final prefs = await SharedPreferences.getInstance();
     final todoData = prefs.getStringList(key);
     if (todoData == null) {
@@ -59,6 +63,7 @@ class RecurListModel extends ChangeNotifier {
   }
 
   void _deleteAllRecurrence(String task) async {
+    // deletes the recurrence data  by removing the task str
     final prefs = await SharedPreferences.getInstance();
     List<String> keys = ['daily', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
     List<String> tasks = [];
@@ -78,6 +83,7 @@ class RecurListModel extends ChangeNotifier {
   }
 
   void refreshAll(){
+    // gets the recurrence data while notify listeners
     _recurItems = [];
     _getRecurData(reKey).then((data) {
       _recurItems.addAll(

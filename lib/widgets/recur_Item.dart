@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:Check_Yourself/models/recur_list_model.dart';
-import 'package:Check_Yourself/models/task.dart';
+import '../models/recur_list_model.dart';
+import '../models/task.dart';
 
 
 class RecurItem extends StatelessWidget {
   // This class creates a todoItem, including its properties
   final Task task;
 
-  RecurItem({@required this.task}); // the constuctor for a todoItem that requires a task
+  // the constuctor for a recurItem that requires a task
+  RecurItem({@required this.task}); 
 
   @override
   Widget build(BuildContext context) {
+    // this builds an icon button that prompts an alert that
+    // will be used to delete/remove a recur/task item
     return new ListTile(
         leading: IconButton(
           onPressed: () => _promptRemoveRecur(context),
