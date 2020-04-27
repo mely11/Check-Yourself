@@ -3,11 +3,10 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/task.dart';
-import'../screens/add_todo_screen.dart';
 import '../globals.dart' as globals;
 
 class RecurListModel extends ChangeNotifier {
-  // This class @andrew :D
+  // This class ~ :D
   List<Task> _recurItems = [];
   String reKey = 'allRecur';
 
@@ -36,7 +35,7 @@ class RecurListModel extends ChangeNotifier {
     _recurItems.remove(task);
     notifyListeners();
     _saveRecurData(reKey, _recurItems);
-    _deleteAllRecurance(json.encode(task.toJson()));
+    _deleteAllRecurrence(json.encode(task.toJson()));
   }
 
 
@@ -59,7 +58,7 @@ class RecurListModel extends ChangeNotifier {
     }
   }
 
-  void _deleteAllRecurance(String task) async {
+  void _deleteAllRecurrence(String task) async {
     final prefs = await SharedPreferences.getInstance();
     List<String> keys = ['daily', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
     List<String> tasks = [];
@@ -75,7 +74,7 @@ class RecurListModel extends ChangeNotifier {
         tasks.clear();
       }
     }
-    print ('all recurrances deleted');
+    print ('all recurrences deleted');
   }
 
   void refreshAll(){

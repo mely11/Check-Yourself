@@ -3,12 +3,12 @@ import 'package:provider/provider.dart';
 import '../widgets/recur_list.dart';
 import '../models/recur_list_model.dart';
 
-class EditRecuranceScreen extends StatefulWidget{
+class EditRecurrenceScreen extends StatefulWidget{
   @override
   State<StatefulWidget> createState() => EditRecurScreenState();
 }
 
-class EditRecurScreenState extends State<EditRecuranceScreen>{
+class EditRecurScreenState extends State<EditRecurrenceScreen>{
   // This class controls the edit-recur screen state
 
   Widget _buildRecurTaskList(BuildContext context){

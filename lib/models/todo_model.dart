@@ -5,10 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../globals.dart' as globals;
 import '../models/task.dart';
 import '../models/date_operations.dart';
-import '../widgets/recur_list.dart';
-import '../widgets/recur_list.dart';
-import 'recur_list_model.dart';
-import 'recur_list_model.dart';
 import 'task.dart';
 
 class TodoModel extends ChangeNotifier {

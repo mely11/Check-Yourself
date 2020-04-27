@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'globals.dart' as globals;
-import 'package:Check_Yourself/models/date_operations.dart';
 import 'package:Check_Yourself/models/recur_list_model.dart';
 import 'package:Check_Yourself/screens/todo_list_screen.dart';
 import 'package:Check_Yourself/models/todo_model.dart';

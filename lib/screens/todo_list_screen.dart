@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import '../screens/calendar.dart';
 import '../screens/options_screen.dart';
 import '../widgets/todo_list.dart';
-import '../models/task.dart';
 import '../globals.dart' as globals;
 import '../screens/add_todo_screen.dart';
 import '../models/date_operations.dart';

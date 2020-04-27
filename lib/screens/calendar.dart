@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:calendar_strip/calendar_strip.dart';
 import '../models/todo_model.dart';
 import '../globals.dart' as globals;
-import '../models/date_operations.dart';
 
 class Calendar extends StatefulWidget{
   // This class creates a new calendar screen state as a stateful widget

@@ -3,9 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../globals.dart' as globals;
 import '../models/todo_model.dart';
-import '../models/date_operations.dart';
 import '../models/recur_list_model.dart';
-import '../screens/edit_recurance_screen.dart';
+import '../screens/edit_recurrence_screen.dart';
 
 class OptionsScreen extends StatefulWidget{
   // This class creates a new options screen state as a stateful widget
@@ -95,7 +94,7 @@ class OptionsScreenState extends State<OptionsScreen>{
   void _editRecurringTask(){
     // This method edits the recurring task
     Navigator.of(context).push(
-        new MaterialPageRoute(builder: (context) => EditRecuranceScreen()
+        new MaterialPageRoute(builder: (context) => EditRecurrenceScreen()
         )
     );
   }
