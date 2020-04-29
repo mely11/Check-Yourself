@@ -23,20 +23,24 @@ class SharedPreferencesStorage {
     List<String> recurList = await _getPreferenceOrInitialize(dayname);
 
     String encodedTask = _encodeTask(task);
-    recurList.add(encodedTask);
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setStringList(dayname, recurList);
-    _refreshModels(context);
+    if (!recurList.contains(encodedTask)) {
+      recurList.add(encodedTask);
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setStringList(dayname, recurList);
+      _refreshModels(context);
+    }
   }
 
   addTaskToAllRecurringTasksList(BuildContext context, Task task) async {
     List<String> recurList = await _getPreferenceOrInitialize('allRecur');
 
     String encodedTask = _encodeTask(task);
-    recurList.add(encodedTask);
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setStringList('allRecur', recurList);
-    _refreshModels(context);
+    if (!recurList.contains(encodedTask)) {
+      recurList.add(encodedTask);
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setStringList('allRecur', recurList);
+      _refreshModels(context);
+    }
   }
 
   Future<List<String>> _getPreferenceOrInitialize(String name) async {
