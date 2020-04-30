@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../widgets/recur_list.dart';
 import '../models/recur_list_model.dart';
 
 class EditRecurrenceScreen extends StatefulWidget{
-  // This class creates a EditRecurScreenStat 
+  // This class creates a EditRecurScreenStat mutable state
   @override
   State<StatefulWidget> createState() => EditRecurScreenState();
 }
@@ -21,9 +22,8 @@ class EditRecurScreenState extends State<EditRecurrenceScreen>{
   @override
   Widget build(BuildContext context) {
     // This creates the buildOptionsList
-    Color iconColor = const Color.fromARGB(0xFE, 0xFE, 0xFE, 0xFE); 
     return new Scaffold(
-        backgroundColor: iconColor,
+        backgroundColor: Color(0xffdfeaf1),
         appBar: AppBar(
           title: Text ('Recurring Tasks'),
         ),

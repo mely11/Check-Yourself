@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:calendar_strip/calendar_strip.dart';
+
 import '../models/todo_model.dart';
 import '../globals.dart' as globals;
 
 class Calendar extends StatefulWidget{
-  // This class creates a new calendar screen state as a stateful widget
+  // This class creates a new calendar screen mutable state 
+  // as a stateful widget
   @override
   createState()=> new CalendarScreenState();
 }
@@ -44,22 +46,22 @@ class CalendarScreenState extends State<Calendar> {
     );
   }
 
-  getMarkedIndicatorWidget() {
-    // getMarkedIndicatorWidget method returns the getMarkedIndicator widget 
-    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      Container(
-        margin: EdgeInsets.only(left: 1, right: 1),
-        width: 7,
-        height: 7,
-        decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.red),
-      ),
-      Container(
-        width: 7,
-        height: 7,
-        decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.blue),
-      )
-    ]);
-  }
+  // getMarkedIndicatorWidget() {
+  //   // getMarkedIndicatorWidget method returns the getMarkedIndicator widget 
+  //   return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+  //     Container(
+  //       margin: EdgeInsets.only(left: 1, right: 1),
+  //       width: 7,
+  //       height: 7,
+  //       decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.red),
+  //     ),
+  //     Container(
+  //       width: 7,
+  //       height: 7,
+  //       decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.blue),
+  //     )
+  //   ]);
+  // }
 
   dateTileBuilder(date, selectedDate, rowIndex, dayName, isDateMarked,
       isDateOutOfRange) {
@@ -77,9 +79,9 @@ class CalendarScreenState extends State<Calendar> {
           style: !isSelectedDate ? normalStyle : selectedStyle),
     ];
 
-    if (isDateMarked == true) {
-      _children.add(getMarkedIndicatorWidget());
-    }
+    // if (isDateMarked == true) {
+      // _children.add(getMarkedIndicatorWidget());
+    // }
 
     return AnimatedContainer(
       duration: Duration(milliseconds: 150),

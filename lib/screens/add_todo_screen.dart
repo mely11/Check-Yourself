@@ -1,34 +1,37 @@
+import 'package:flutter/material.dart';
 import 'dart:core';
 
-import 'package:Check_Yourself/models/day.dart';
-import 'package:Check_Yourself/models/add_todo_model.dart';
-import 'package:flutter/material.dart';
+import '../models/day.dart';
+import '../models/add_todo_model.dart';
 
 class AddTodoScreen extends StatefulWidget {
+  // This class creates a new AddTodoScreenState mutable state
   @override
   createState() => new AddTodoScreenState();
 }
 
 class AddTodoScreenState extends State<AddTodoScreen> {
+  // This class creates a new addTodoModel 
   AddTodoModel addTodoModel = new AddTodoModel();
 
   @override
   Widget build(BuildContext context) {
+    // builds and returns the decorated Widget
     return new Scaffold(
-        backgroundColor: _makeBackgroundColor(),
+        backgroundColor: Color(0xFFFFFFFF),
         appBar: _makeAppBar(),
         body: _makeBody());
   }
 
-  Color _makeBackgroundColor() {
-    return Color.fromARGB(0xFE, 0xFE, 0xFE, 0xFE);
-  }
-
   AppBar _makeAppBar() {
+    // makes the AppBar to be titled
     return new AppBar(title: new Text('Add a task'));
   }
 
   Column _makeBody() {
+    // makes the TextField to be task name,
+    // ListTile to display intended texts,
+    // and makes submit buttom and day cards
     return new Column(
       children: <Widget>[
         _makeTaskNameTextField(),
@@ -40,6 +43,7 @@ class AddTodoScreenState extends State<AddTodoScreen> {
   }
 
   TextField _makeTaskNameTextField() {
+    // uses onSubmitted to set task name in addTodoModel
     return TextField(
       autofocus: true,
       onSubmitted: (val) {
@@ -52,6 +56,7 @@ class AddTodoScreenState extends State<AddTodoScreen> {
   }
 
   ListTile _makeAskRecurText() {
+    // returns the intended ListTile
     return ListTile(
       title: Text('When should this task recur?'),
       dense: true,
@@ -59,6 +64,8 @@ class AddTodoScreenState extends State<AddTodoScreen> {
   }
 
   Column _makeDayCards() {
+    // returns new Column as a vertical array of children
+    // that builds all the days labelled cards
     return new Column(children: <Widget>[
       _buildCardWithLabel(this, Day.DAILY),
       _buildCardWithLabel(this, Day.SATURDAY),
@@ -72,11 +79,18 @@ class AddTodoScreenState extends State<AddTodoScreen> {
   }
 
   RaisedButton _makeSubmitButton() {
+    // creates a filled button using RaisedButton and uses
+    // onPressed function to call submitTask functions
     return RaisedButton(
         onPressed: () => _submitTask(), child: Text('Check yourself'));
   }
 
   Card _buildCardWithLabel(AddTodoScreenState state, Day day) {
+    // creates and returns a material design card, makes onchanged
+    // to be called when the value of the checkbox should change and 
+    // setWillRecurOnDay method in addTodoModel to set the given recur
+    // days, and finally sets the color to use for both the check icon 
+    // and the check box when given checkbox(s) is (are) checked
     return Card(
         child: CheckboxListTile(
       title: Text(_capitalizeString(getStringRepresentingDay(day))),
@@ -88,12 +102,13 @@ class AddTodoScreenState extends State<AddTodoScreen> {
         });
       },
       activeColor: Colors.white,
-      checkColor: Colors.green,
+      checkColor: Colors.blue[200],
       dense: true,
     ));
   }
 
   String _capitalizeString(String str) {
+    // capitalizes an input string object
     return "${str[0].toUpperCase()}${str.substring(1)}";
   }
 

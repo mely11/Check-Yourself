@@ -1,3 +1,4 @@
+// enumerate days
 enum Day {
   DAILY,
   SATURDAY,
@@ -10,5 +11,8 @@ enum Day {
 }
 
 String getStringRepresentingDay(Day day) {
+  // this method converts a Day object that represents
+  // a particular day to a lowercased string using split
+  // toString, and toLowerCase methods
   return day.toString().split(".")[1].toLowerCase();
 }

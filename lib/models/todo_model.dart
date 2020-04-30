@@ -2,6 +2,7 @@ import 'dart:collection';
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../globals.dart' as globals;
 import 'date_operations.dart';
 import 'task.dart';
@@ -14,13 +15,14 @@ class TodoModel extends ChangeNotifier {
   List<Task> _todoItems = [];
   String keyDate = DateOperations().getStringDate(globals.setDate);
 
+  // creates an unmodifiable list backed by todoItems
   UnmodifiableListView<Task> get todoItems => UnmodifiableListView(_todoItems);
 
   TodoModel() {
     // constructs todoModel using Task class's fromJson method to 
     // parse (decode) the string and return the resulting Json object, 
     // and then forms a list of iterable Task object made out of the 
-    // decoded Json object and notifies the listeners
+    // decoded Json object and notifies/calls all the registered listeners 
     _getTodoData().then((data) {
       _todoItems.addAll(
           data.map((i) => Task.fromJson(json.decode(i))).toList());
@@ -31,7 +33,7 @@ class TodoModel extends ChangeNotifier {
   void addTodo(Task task) {
     // This method adds a todoTask into 
     // _todoItems, saves added data, and 
-    // notifies the listeners 
+    // notifies/calls all the registered listeners 
     _todoItems.add(task);
     notifyListeners();
     _saveTodoData();
@@ -39,8 +41,8 @@ class TodoModel extends ChangeNotifier {
 
   void removeTodoAtIndex(int index) {
     // removes a todoTask with a given 
-    // index, saves removed data, 
-    // and notifies the listeners 
+    // index, saves removed data, and notifies,
+    // or calls, all the registered listeners 
     _todoItems.removeAt(index);
     notifyListeners();
     _saveTodoData();
@@ -48,7 +50,8 @@ class TodoModel extends ChangeNotifier {
 
   void removeTodo(Task task) {
     // removes a todoTask, saves removed 
-    // data, and notifies the listeners 
+    // data, and notifies/calls all the 
+    // registered listeners 
     _todoItems.remove(task);
     notifyListeners();
     _saveTodoData();
@@ -57,8 +60,8 @@ class TodoModel extends ChangeNotifier {
 
   void toggleDone(Task task) {
     // toggles a task, saves the changed bool 
-    // state of a particular Task, and notifies 
-    // the listeners 
+    // state of a particular Task, and notifies, 
+    // or calls, all the registered listeners 
     final index = _todoItems.indexOf(task);
     _todoItems[index].toggleDone();
     notifyListeners();
@@ -142,8 +145,8 @@ class TodoModel extends ChangeNotifier {
   }
 
   void refreshAll () async{
-    // refreshes the page to contain an empty set of todoItem 
-    // in the _todoItems list while notifying the listeners
+    // refreshes the page to contain an empty set of todoItem in the 
+    // _todoItems list while notify/call all the registered listeners 
     keyDate = DateOperations().getStringDate(globals.setDate);
     _todoItems = [];
     await _getTodoData().then((data) {

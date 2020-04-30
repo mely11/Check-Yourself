@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:Check_Yourself/widgets/recur_Item.dart';
-import 'package:Check_Yourself/models/task.dart';
+
+import 'recur_Item.dart';
+import '../models/task.dart';
 
 class RecurList extends StatelessWidget {
   // This class builds a recurrence list

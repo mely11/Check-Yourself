@@ -1,5 +1,8 @@
 library my_prj.globals;
-// a collection of lobal variables used throughout
+// a collection of lobal variables used throughout,
+// specifically the an instant in time, the initialized
+// weekday as well as the recur day boo values that are 
+// all set to be alse in the first places
 
 DateTime setDate;
 

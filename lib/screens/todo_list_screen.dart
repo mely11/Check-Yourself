@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'calendar.dart';
 import 'options_screen.dart';
 import 'add_todo_screen.dart';
+
 import '../models/todo_model.dart';
 import '../widgets/todo_list.dart';
 import '../globals.dart' as globals;
@@ -10,7 +11,7 @@ import '../models/date_operations.dart';
 
 
 class TodoListScreen extends StatefulWidget{
-  // This class builds TodoListScreenState as a stateful widget
+  // This class builds TodoListScreenState mutable state
   @override
   createState()=> new TodoListScreenState();
 }
@@ -25,10 +26,9 @@ class TodoListScreenState extends State<TodoListScreen> {
 
   @override
   Widget build(BuildContext context){
-    // builds all the buttons with their actions as well as the todoList
-   Color iconColor = const Color.fromARGB(0xFE, 0xFE, 0xFE, 0xFE); 
+    // builds all the buttons with their actions as well as the todoList; 
     return new Scaffold(
-      backgroundColor: iconColor,
+      backgroundColor: Color(0xffdfeaf1),
       appBar: new AppBar(
         title: new Text('Todo List: '+DateOperations().getStringDate(globals.setDate)),
         actions: <Widget>[
@@ -81,32 +81,4 @@ class TodoListScreenState extends State<TodoListScreen> {
           ,)
     );
   }
-
-//  void _pushAddToDo() {
-//    // creates/pops up a new page for adding a task and uses Provider to call the corresponding
-//    // addTodo method in TodoModel, which handles adding and saving new task
-//    Navigator.of(context).push(
-//      //TO DO: this is a separate page that maybe should be its own screen file,
-//      // nparticularly if it gets more complicated
-//      // e.g. if you also add some validation to not let you duplicate task names etc.
-//        new MaterialPageRoute(
-//            builder: (context) {
-//              return new Scaffold(
-//                  appBar: new AppBar(title: new Text('add a task')
-//                  ),
-//                  body: new TextField(
-//                    autofocus: true,
-//                    onSubmitted: (val) {
-//                      Provider.of<TodoModel>(context, listen:false).addTodo(Task(name: val));
-//                      Navigator.pop(context);
-//                    },
-//                    decoration: new InputDecoration(
-//                        hintText: "What do you want to accomplish?",
-//                        contentPadding: const EdgeInsets.all(15.0)
-//                    ),
-//                  )
-//              );
-//            })
-//    );
-//  }
 }

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../globals.dart' as globals;
 import '../models/todo_model.dart';
 import '../models/recur_list_model.dart';
 import 'edit_recurrence_screen.dart';
 
 class OptionsScreen extends StatefulWidget{
-  // This class creates a new options screen state as a stateful widget
+  // This class creates a new options screen mutable state
   @override
   createState()=> new OptionsScreenState();
 }
