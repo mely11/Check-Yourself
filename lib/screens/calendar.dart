@@ -103,6 +103,7 @@ class CalendarScreenState extends State<Calendar> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Calendar'),
+        backgroundColor: Color.fromARGB(255, 66, 177, 227),
       ),
       body: Container(
           child: CalendarStrip(
@@ -111,10 +112,10 @@ class CalendarScreenState extends State<Calendar> {
             selectedDate: selectedDate,
             onDateSelected: onSelect,
             dateTileBuilder: dateTileBuilder,
-            iconColor: Colors.black87,
+            iconColor: Colors.black54,
             monthNameWidget: _monthNameWidget,
             markedDates: markedDates,
-            containerDecoration: BoxDecoration(color: Colors.black12),
+            containerDecoration: BoxDecoration(color: Color(0xffdfeaf1)),
           )
           //child: TodoModel(
 

@@ -28,7 +28,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
         title: 'Check Yourself',
-        home: new TodoListScreen()
+        home: new TodoListScreen(),
+        color: Color.fromARGB(255, 66, 177, 227),
+        theme: ThemeData(
+          buttonColor: Color(0xffdfeaf1)),
+        //     textTheme: TextTheme(
+        //     body2: TextStyle(color: Colors.white60, fontSize: 21.0),
+        //     display1: TextStyle(color: Colors.black87, fontSize: 37.0),
+        //     caption: TextStyle(
+        //     color: Colors.white,
+        //     fontSize: 14.0,
+        //     fontWeight: FontWeight.bold),
+        //     subhead: TextStyle(color: Colors.black45, fontSize: 12.0),
     );
   }
 }

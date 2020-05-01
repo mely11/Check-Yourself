@@ -21,26 +21,26 @@ class TodoItem extends StatelessWidget {
     Color checkedColor = const Color.fromARGB(0xFF, 0x81, 0xA5, 0xF1);  // the color appears when this checkbox is checked
     Color iconColor = const Color.fromARGB(0xFE, 0xFE, 0xFE, 0xFE); 
     return new CheckboxListTile(
-          value: task.done,
-          onChanged: (bool value) {
-            Provider.of<TodoModel>(context, listen: false).toggleDone(task);
-          },
-          activeColor: checkedColor, // the color appears when this checkbox is checked, Colors.black12 looks better?
-          checkColor: iconColor,
-          secondary: IconButton(
-            onPressed: () => _promptRemoveToDo(context),
-            icon: Icon(Icons.close),
-            color: Colors.red,
-          ),
-          
-          controlAffinity: ListTileControlAffinity.leading,
-          title: Text(task.name, style: TextStyle(
-                      color: task.done ? Colors.black38 : Colors.black87,
-                      fontSize: 18.7,
-                      decoration: task.done
-                      ? TextDecoration.lineThrough
-                      : TextDecoration.none)
-          )
+      value: task.done,
+      onChanged: (bool value) {
+        Provider.of<TodoModel>(context, listen: false).toggleDone(task);
+      },
+      activeColor: checkedColor, // the color appears when this checkbox is checked, Colors.black12 looks better?
+      checkColor: iconColor,
+      secondary: IconButton(
+        onPressed: () => _promptRemoveToDo(context),
+        icon: Icon(Icons.close),
+        color: Colors.red,
+      ),
+      
+      controlAffinity: ListTileControlAffinity.leading,
+      title: Text(task.name, style: TextStyle(
+                  color: task.done ? Colors.black38 : Colors.black87,
+                  fontSize: 18.7,
+                  decoration: task.done
+                  ? TextDecoration.lineThrough
+                  : TextDecoration.none)
+      )
     );
   }
 

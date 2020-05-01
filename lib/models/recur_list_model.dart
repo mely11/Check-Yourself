@@ -14,7 +14,7 @@ class RecurListModel extends ChangeNotifier {
   List<Task> _recurItems = [];
   String reKey = 'allRecur';
 
-  // Creates an unmodifiable list backed by recurItems
+  // creates an unmodifiable list backed by recurItems
   UnmodifiableListView<Task> get recurItems => UnmodifiableListView(_recurItems);
 
   RecurListModel() {

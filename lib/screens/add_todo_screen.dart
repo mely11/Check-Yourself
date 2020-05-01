@@ -18,14 +18,15 @@ class AddTodoScreenState extends State<AddTodoScreen> {
   Widget build(BuildContext context) {
     // builds and returns the decorated Widget
     return new Scaffold(
-        backgroundColor: Color(0xFFFFFFFF),
-        appBar: _makeAppBar(),
-        body: _makeBody());
+      appBar: _makeAppBar(),
+      body: _makeBody()
+    );
   }
 
   AppBar _makeAppBar() {
     // makes the AppBar to be titled
-    return new AppBar(title: new Text('Add a task'));
+    return new AppBar(title: new Text('Add a task'),
+      backgroundColor: Color.fromARGB(255, 66, 177, 227));
   }
 
   Column _makeBody() {
@@ -45,23 +46,28 @@ class AddTodoScreenState extends State<AddTodoScreen> {
   TextField _makeTaskNameTextField() {
     // uses onSubmitted to set task name in addTodoModel
     return TextField(
+      cursorColor: Color.fromARGB(255, 66, 177, 227),
       autofocus: true,
-      onSubmitted: (val) {
-        addTodoModel.setTaskName(val);
-      },
       decoration: new InputDecoration(
-          hintText: "What do you want to accomplish?",
-          contentPadding: const EdgeInsets.all(15.0)),
-    );
+        enabledBorder: const UnderlineInputBorder(
+          borderSide: const BorderSide(color: Color.fromARGB(255, 66, 177, 227), width: 2.1),
+        ),
+        hintText: "What do you want to accomplish?",
+        contentPadding: const EdgeInsets.all(15.0)),
+        onSubmitted: (val) {
+        addTodoModel.setTaskName(val != null ? val : '');
+      },
+ );
   }
 
   ListTile _makeAskRecurText() {
     // returns the intended ListTile
     return ListTile(
-      title: Text('When should this task recur?'),
+      title: Text('When should this task recur?', style: TextStyle(fontSize: 15.9)),
       dense: true,
     );
   }
+        // highlightColor: Color(0xffdfeaf4),
 
   Column _makeDayCards() {
     // returns new Column as a vertical array of children
@@ -82,7 +88,13 @@ class AddTodoScreenState extends State<AddTodoScreen> {
     // creates a filled button using RaisedButton and uses
     // onPressed function to call submitTask functions
     return RaisedButton(
-        onPressed: () => _submitTask(), child: Text('Check yourself'));
+      elevation: 5,
+      padding: EdgeInsets.only(
+        left: 145,
+        right: 145),
+      highlightColor: Color(0xffdfeaf4),
+      onPressed: () => _submitTask(), 
+      child: Text('Check yourself!', style: TextStyle(fontSize: 15.7)));
   }
 
   Card _buildCardWithLabel(AddTodoScreenState state, Day day) {
@@ -92,14 +104,16 @@ class AddTodoScreenState extends State<AddTodoScreen> {
     // days, and finally sets the color to use for both the check icon 
     // and the check box when given checkbox(s) is (are) checked
     return Card(
-        child: CheckboxListTile(
-      title: Text(_capitalizeString(getStringRepresentingDay(day))),
-      value: addTodoModel.getWillRecurOnDay(day),
-      onChanged: (bool value) {
-        // ignore: invalid_use_of_protected_member
-        state.setState(() {
-          addTodoModel.setWillRecurOnDay(day, value);
-        });
+      margin: EdgeInsets.all(4.9),
+      child: CheckboxListTile(
+          title: Text(_capitalizeString(getStringRepresentingDay(day)), style: TextStyle(fontSize: 14.57)),
+          value: addTodoModel.getWillRecurOnDay(day),
+          onChanged: (bool value) {
+            // ignore: invalid_use_of_protected_member
+          state.setState(() {
+            addTodoModel.setWillRecurOnDay(day, value);
+          },
+        );
       },
       activeColor: Colors.white,
       checkColor: Colors.blue[200],

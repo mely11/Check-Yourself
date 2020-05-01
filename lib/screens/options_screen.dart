@@ -52,6 +52,7 @@ class OptionsScreenState extends State<OptionsScreen>{
     // This creates the buildOptionsList
     return new Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 66, 177, 227),
         title: Text ('Options'),
       ),
       body: _buildOptionsList(context)

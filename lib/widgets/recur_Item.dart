@@ -35,19 +35,19 @@ class RecurItem extends StatelessWidget {
     // the aid of Provider as a mocked class while popping the alert/prompt page
     showDialog(context: context, builder: (BuildContext context) {
       return new AlertDialog(
-          title: new Text('Delete "${task.name}" ?'),
-          content: Text('This will remove all recurances of "${task.name}"'),
-          actions: <Widget>[
-            new FlatButton(onPressed: () => Navigator.of(context).pop(),
-                child: new Text ('Cancel')),
-            new FlatButton(
-                child: new Text('DELETE'),
-                onPressed: () {
-                  Provider.of<RecurListModel>(context, listen: false).removeRecur(task);
-                  Navigator.of(context).pop();
-                }
-            )
-          ]
+        title: new Text('Delete "${task.name}" ?'),
+        content: Text('This will remove all recurances of "${task.name}"'),
+        actions: <Widget>[
+          new FlatButton(onPressed: () => Navigator.of(context).pop(),
+            child: new Text ('Cancel')),
+          new FlatButton(
+            child: new Text('DELETE'),
+            onPressed: () {
+              Provider.of<RecurListModel>(context, listen: false).removeRecur(task);
+              Navigator.of(context).pop();
+            }
+          )
+        ]
       );
     }
     );
