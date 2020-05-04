@@ -20,26 +20,43 @@ class OptionsScreenState extends State<OptionsScreen>{
     return new ListView(
       children: <Widget>[
         ListTile(
-          title: Text('Recurring Task Options:'),
+          title: Text('Recurring Task Options:',
+                  style: 
+                    TextStyle(fontSize: 21,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black54)),
           dense: true,
           leading: Icon(Icons.assignment_turned_in, size: 30.0, color: Colors.amber),
         ),
         Card(
           child: ListTile(
             onTap: () => _editRecurringTask(),
-            title: Text('Edit Recurring Tasks'),
+            title: Text('Edit Recurring Tasks', 
+                    style: 
+                      TextStyle(fontSize: 16,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.black87)),
             leading: Icon(Icons.add_box, color: Colors.lightBlue),
           ),
         ),
         ListTile(
-          title: Text('User Data Options:'),
+          title: Text('User Data Options:',
+                  style: 
+                    TextStyle(fontSize: 21,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black54)
+          ),
           dense: true,
           leading: Icon(Icons.person, size: 35.0, color: Colors.blue),
         ),
         Card(
             child: ListTile(
                 onTap: () => _promptDataDelete(context),
-                title: Text('Delete All User Data'),
+                title: Text('Delete All User Data', 
+                    style: 
+                      TextStyle(fontSize: 16,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.black87)),
               leading: Icon(Icons.delete),
             )
         ),
@@ -53,7 +70,11 @@ class OptionsScreenState extends State<OptionsScreen>{
     return new Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 66, 177, 227),
-        title: Text ('Options'),
+        title: Text ('Options', 
+          style: 
+          TextStyle(fontSize: 25,
+              fontWeight: FontWeight.w500,
+              color: Colors.white)),
       ),
       body: _buildOptionsList(context)
     );

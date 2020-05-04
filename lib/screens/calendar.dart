@@ -38,30 +38,13 @@ class CalendarScreenState extends State<Calendar> {
     return Container(
       child: Text(monthName,
           style:
-          TextStyle(fontSize: 17,
+          TextStyle(fontSize: 21,
               fontWeight: FontWeight.w600,
               color: Colors.black87,
               fontStyle: FontStyle.italic)),
-      padding: EdgeInsets.only(top: 8, bottom: 4),
+      padding: EdgeInsets.only(top: 7, bottom: 0),
     );
   }
-
-  // getMarkedIndicatorWidget() {
-  //   // getMarkedIndicatorWidget method returns the getMarkedIndicator widget 
-  //   return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-  //     Container(
-  //       margin: EdgeInsets.only(left: 1, right: 1),
-  //       width: 7,
-  //       height: 7,
-  //       decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.red),
-  //     ),
-  //     Container(
-  //       width: 7,
-  //       height: 7,
-  //       decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.blue),
-  //     )
-  //   ]);
-  // }
 
   dateTileBuilder(date, selectedDate, rowIndex, dayName, isDateMarked,
       isDateOutOfRange) {
@@ -71,17 +54,13 @@ class CalendarScreenState extends State<Calendar> {
     TextStyle normalStyle = TextStyle(
         fontSize: 17, fontWeight: FontWeight.w800, color: fontColor);
     TextStyle selectedStyle = TextStyle(
-        fontSize: 17, fontWeight: FontWeight.w800, color: Colors.black87);
+        fontSize: 18, fontWeight: FontWeight.w800, color: Colors.black87);
     TextStyle dayNameStyle = TextStyle(fontSize: 14.5, color: fontColor);
     List<Widget> _children = [
       Text(dayName, style: dayNameStyle),
       Text(date.day.toString(),
           style: !isSelectedDate ? normalStyle : selectedStyle),
     ];
-
-    // if (isDateMarked == true) {
-      // _children.add(getMarkedIndicatorWidget());
-    // }
 
     return AnimatedContainer(
       duration: Duration(milliseconds: 150),
@@ -102,7 +81,11 @@ class CalendarScreenState extends State<Calendar> {
     // build method builds the calendar
     return Scaffold(
       appBar: AppBar(
-        title: Text('Calendar'),
+        title: Text('Calendar', 
+          style: 
+          TextStyle(fontSize: 25,
+              fontWeight: FontWeight.w500,
+              color: Colors.white)),
         backgroundColor: Color.fromARGB(255, 66, 177, 227),
       ),
       body: Container(
@@ -117,9 +100,6 @@ class CalendarScreenState extends State<Calendar> {
             markedDates: markedDates,
             containerDecoration: BoxDecoration(color: Color(0xffdfeaf1)),
           )
-          //child: TodoModel(
-
-          //)
         ),
     );
   }

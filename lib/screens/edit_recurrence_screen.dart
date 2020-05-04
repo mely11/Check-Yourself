@@ -25,7 +25,11 @@ class EditRecurScreenState extends State<EditRecurrenceScreen>{
     return new Scaffold(
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 66, 177, 227),
-          title: Text ('Recurring Tasks'),
+          title: Text ('Recurring Tasks', 
+          style: 
+          TextStyle(fontSize: 25,
+              fontWeight: FontWeight.w500,
+              color: Colors.white)),
         ),
         body: _buildRecurTaskList(context),
     );

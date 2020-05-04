@@ -25,7 +25,11 @@ class AddTodoScreenState extends State<AddTodoScreen> {
 
   AppBar _makeAppBar() {
     // makes the AppBar to be titled
-    return new AppBar(title: new Text('Add a task'),
+    return new AppBar(title: new Text('Add a task', 
+          style: 
+          TextStyle(fontSize: 25,
+              fontWeight: FontWeight.w500,
+              color: Colors.white)),
       backgroundColor: Color.fromARGB(255, 66, 177, 227));
   }
 
