@@ -18,6 +18,7 @@ class AddTodoScreenState extends State<AddTodoScreen> {
   Widget build(BuildContext context) {
     // builds and returns the decorated Widget
     return new Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: _makeAppBar(),
       body: _makeBody()
     );
@@ -59,7 +60,7 @@ class AddTodoScreenState extends State<AddTodoScreen> {
         hintText: "What do you want to accomplish?",
         contentPadding: const EdgeInsets.all(15.0)),
         onSubmitted: (val) {
-        addTodoModel.setTaskName(val != null ? val : '');
+          addTodoModel.setTaskName(val != null ? val : '');
       },
  );
   }
@@ -108,7 +109,7 @@ class AddTodoScreenState extends State<AddTodoScreen> {
     // days, and finally sets the color to use for both the check icon 
     // and the check box when given checkbox(s) is (are) checked
     return Card(
-      margin: EdgeInsets.all(4.9),
+      margin: EdgeInsets.all(2.1),
       child: CheckboxListTile(
           title: Text(_capitalizeString(getStringRepresentingDay(day)), style: TextStyle(fontSize: 14.57)),
           value: addTodoModel.getWillRecurOnDay(day),
