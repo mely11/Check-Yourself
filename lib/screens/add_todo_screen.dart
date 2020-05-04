@@ -131,7 +131,10 @@ class AddTodoScreenState extends State<AddTodoScreen> {
     return "${str[0].toUpperCase()}${str.substring(1)}";
 
   }
+
   void _emptyTaskWarning(BuildContext context) {
+    // returns nothing but creates and will display both an alert dialog
+    // and a flat botton if an empty task is added into the text field
     showDialog(context: context, builder: (BuildContext context) {
       return new AlertDialog(
           title: Text('Task Addition Failed'),
@@ -145,9 +148,11 @@ class AddTodoScreenState extends State<AddTodoScreen> {
   }
 
   void _submitTask() async {
-    // submits a task via adding it using addTodo method in
-    // the TodoModel and Provider class, checks the frequency
-    // of the typedname stored in the AddTodoScreenState
+    // submits a valid (not-null) task via adding it using 
+    // addTodo method in the TodoModel and Provider class, 
+    // checks the frequency of the typedname stored in the 
+    // AddTodoScreenState; if the task is null, then directs
+    // the user to a warning by calling emptyTaskWarning func
     if (addTodoModel.taskBuilder.getTaskName() != '') {
       addTodoModel.createTask(context);
       Navigator.pop(context);
