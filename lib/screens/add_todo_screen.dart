@@ -91,11 +91,12 @@ class AddTodoScreenState extends State<AddTodoScreen> {
   RaisedButton _makeSubmitButton() {
     // creates a filled button using RaisedButton and uses
     // onPressed function to call submitTask functions
+    final screenWidth = MediaQuery.of(context).size.width;
     return RaisedButton(
       elevation: 5,
       padding: EdgeInsets.only(
-        left: 145,
-        right: 145),
+        left: (screenWidth - 125) / 2,
+        right: (screenWidth - 125) / 2),
       highlightColor: Color(0xffdfeaf4),
       onPressed: () => _submitTask(), 
       child: Text('Check yourself!', style: TextStyle(fontSize: 15.7)));
