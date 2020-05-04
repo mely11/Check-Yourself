@@ -20,7 +20,7 @@ class AddTodoScreenState extends State<AddTodoScreen> {
     return new Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: _makeAppBar(),
-      body: _makeBody()
+      body: SingleChildScrollView(child: _makeBody()),
     );
   }
 
@@ -109,7 +109,7 @@ class AddTodoScreenState extends State<AddTodoScreen> {
     // days, and finally sets the color to use for both the check icon 
     // and the check box when given checkbox(s) is (are) checked
     return Card(
-      margin: EdgeInsets.all(2.1),
+      margin: EdgeInsets.all(4.8),
       child: CheckboxListTile(
           title: Text(_capitalizeString(getStringRepresentingDay(day)), style: TextStyle(fontSize: 14.57)),
           value: addTodoModel.getWillRecurOnDay(day),
