@@ -33,7 +33,7 @@ class TodoListScreenState extends State<TodoListScreen> {
         backgroundColor: Color.fromARGB(255, 66, 177, 227),
         title: new Text('Todo List: '+DateOperations().getStringDate(globals.setDate),
           style: 
-          TextStyle(fontSize: 25,
+          TextStyle(
               fontWeight: FontWeight.w500,
               color: Colors.white)),
         actions: <Widget>[
