@@ -129,13 +129,31 @@ class AddTodoScreenState extends State<AddTodoScreen> {
   String _capitalizeString(String str) {
     // capitalizes an input string object
     return "${str[0].toUpperCase()}${str.substring(1)}";
+
+  }
+  void _emptyTaskWarning(BuildContext context) {
+    showDialog(context: context, builder: (BuildContext context) {
+      return new AlertDialog(
+          title: Text('Task Addition Failed'),
+          content: Text('Please enter a task into the text field'),
+          actions: <Widget>[
+            new FlatButton(onPressed: () => Navigator.of(context).pop(),
+                child: Text ('OK')),
+          ]
+      );
+    });
   }
 
   void _submitTask() async {
     // submits a task via adding it using addTodo method in
     // the TodoModel and Provider class, checks the frequency
     // of the typedname stored in the AddTodoScreenState
-    addTodoModel.createTask(context);
-    Navigator.pop(context);
+    if (addTodoModel.taskBuilder.getTaskName() != '') {
+      addTodoModel.createTask(context);
+      Navigator.pop(context);
+    }
+    else {
+      _emptyTaskWarning(context);
+    }
   }
 }
