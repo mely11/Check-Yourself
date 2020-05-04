@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Check Yourself',
         home: new TodoListScreen(),
         color: Color.fromARGB(255, 66, 177, 227),

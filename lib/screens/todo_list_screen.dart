@@ -28,7 +28,7 @@ class TodoListScreenState extends State<TodoListScreen> {
   Widget build(BuildContext context){
     // builds all the buttons with their actions as well as the todoList; 
     return new Scaffold(
-      // backgroundColor: Color(0xffdfeaf1),
+      backgroundColor: Color(0xffdfeaf1),
       appBar: new AppBar(
         backgroundColor: Color.fromARGB(255, 66, 177, 227),
         title: new Text('Todo List: '+DateOperations().getStringDate(globals.setDate),

@@ -16,7 +16,7 @@ class AddTodoScreenState extends State<AddTodoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // builds and returns the decorated Widget
+    // builds and returns the decorated and scrollable widget
     return new Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: _makeAppBar(),
@@ -72,7 +72,6 @@ class AddTodoScreenState extends State<AddTodoScreen> {
       dense: true,
     );
   }
-        // highlightColor: Color(0xffdfeaf4),
 
   Column _makeDayCards() {
     // returns new Column as a vertical array of children

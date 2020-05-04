@@ -23,6 +23,7 @@ class EditRecurScreenState extends State<EditRecurrenceScreen>{
   Widget build(BuildContext context) {
     // This creates the buildOptionsList
     return new Scaffold(
+        backgroundColor: Color(0xffdfeaf1),
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 66, 177, 227),
           title: Text ('Recurring Tasks', 
