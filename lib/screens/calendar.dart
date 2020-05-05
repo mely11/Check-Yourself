@@ -97,7 +97,7 @@ class CalendarScreenState extends State<Calendar> {
 
   @override
   Widget build(BuildContext context) {
-    // build method builds the calendar
+    // build method builds the calendar, including a background
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(

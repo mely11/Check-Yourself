@@ -21,7 +21,7 @@ class EditRecurScreenState extends State<EditRecurrenceScreen>{
 
   @override
   Widget build(BuildContext context) {
-    // This creates the buildOptionsList
+    // This creates the buildOptionsList, including a background
     Size screenSize = MediaQuery.of(context).size;
     return new Scaffold(
         appBar: AppBar(
