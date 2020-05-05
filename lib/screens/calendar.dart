@@ -40,6 +40,8 @@ class CalendarScreenState extends State<Calendar> {
     globals.weekDay = data.weekday;
     globals.setDate = data;
     this.selectedDate = data;
+    if (Provider.of<TodoModel> (context, listen: false).todoItems != null)
+      todayDate.add(data);
     Provider.of<TodoModel> (context, listen: false).refreshAll();
     Navigator.of(context).pop();
   }
