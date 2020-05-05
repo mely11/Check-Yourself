@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:calendar_strip/date-utils.dart';
 import 'package:provider/provider.dart';
 import 'package:calendar_strip/calendar_strip.dart';
 
@@ -13,15 +14,25 @@ class Calendar extends StatefulWidget{
 }
 
 class CalendarScreenState extends State<Calendar> {
-  // This class sets up a calendar state 
+  // This class sets up a calendar state; the calendar starts at 30 
+  // days before today and ends at the last day of the next month
   DateTime startDate = DateTime.now().subtract(Duration(days: 30));
-  DateTime endDate = DateTime.now().add(Duration(days: 30));
+  DateTime endDate = DateUtils.getLastDayOfNextMonth();
   DateTime selectedDate = globals.setDate;
-  List<DateTime> markedDates = [
+  List<DateTime> todayAndTaskDate = [
     DateTime.now(),
-    DateTime.now().subtract(Duration(days: 1)),
-    DateTime.now().add(Duration(days: 1))
   ];
+
+  getMarkedIndicatorWidget() {		
+     // getMarkedIndicatorWidget method returns the MarkedIndicator widget 		
+     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [		
+       Container(	
+         width: 5,		
+         height: 5,		
+         decoration: BoxDecoration(shape: BoxShape.rectangle, color: Colors.lightBlue[50]),		
+       ),				
+     ]);		
+   }
 
   onSelect(DateTime data) {
     // onSelect method reassigns the global 'setDate' variable, 
@@ -31,6 +42,8 @@ class CalendarScreenState extends State<Calendar> {
     this.selectedDate = data;
     Provider.of<TodoModel> (context, listen: false).refreshAll();
     Navigator.of(context).pop();
+    // if (Provider.of<TodoModel> (context, listen: false).todoItems != null)
+    //   todayAndTaskDate.add(selectedDate);
   }
 
   _monthNameWidget(monthName) {
@@ -42,7 +55,7 @@ class CalendarScreenState extends State<Calendar> {
               fontWeight: FontWeight.w600,
               color: Colors.black87,
               fontStyle: FontStyle.italic)),
-      padding: EdgeInsets.only(top: 7, bottom: 0),
+      padding: EdgeInsets.only(top: 5.2, bottom: 0),
     );
   }
 
@@ -62,7 +75,13 @@ class CalendarScreenState extends State<Calendar> {
           style: !isSelectedDate ? normalStyle : selectedStyle),
     ];
 
+    if (isDateMarked) {	
+      // indicates and marks today
+      _children.add(getMarkedIndicatorWidget());		
+    }
+
     return AnimatedContainer(
+      // returns the container that is animated by box decorations of each day 
       duration: Duration(milliseconds: 150),
       alignment: Alignment.center,
       padding: EdgeInsets.only(top: 8, left: 5, right: 5, bottom: 5),
@@ -97,7 +116,7 @@ class CalendarScreenState extends State<Calendar> {
             dateTileBuilder: dateTileBuilder,
             iconColor: Colors.black54,
             monthNameWidget: _monthNameWidget,
-            markedDates: markedDates,
+            markedDates: todayAndTaskDate,
             containerDecoration: BoxDecoration(color: Color(0xffdfeaf1)),
           )
         ),

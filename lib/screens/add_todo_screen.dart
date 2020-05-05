@@ -93,13 +93,14 @@ class AddTodoScreenState extends State<AddTodoScreen> {
     // onPressed function to call submitTask functions
     final screenWidth = MediaQuery.of(context).size.width;
     return RaisedButton(
-      elevation: 5,
+      elevation: 2.7,
       padding: EdgeInsets.only(
         left: (screenWidth - 125) / 2,
         right: (screenWidth - 125) / 2),
       highlightColor: Color(0xffdfeaf4),
       onPressed: () => _submitTask(), 
-      child: Text('Check yourself!', style: TextStyle(fontSize: 15.7)));
+      child: Text('Check yourself!', 
+        style: TextStyle(fontSize: 15.7)));
   }
 
   Card _buildCardWithLabel(AddTodoScreenState state, Day day) {
