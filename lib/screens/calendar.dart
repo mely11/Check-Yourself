@@ -98,6 +98,7 @@ class CalendarScreenState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     // build method builds the calendar
+    Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text('Calendar', 
@@ -106,8 +107,20 @@ class CalendarScreenState extends State<Calendar> {
               fontWeight: FontWeight.w500,
               color: Colors.white)),
         backgroundColor: Color.fromARGB(255, 66, 177, 227),
-      ),
-      body: Container(
+      ), 
+      body: Stack(
+        children: <Widget>[
+        Container(
+          child: new Image.asset(
+             'assets/images/background.png',
+              width: screenSize.width,
+              height: screenSize.height,
+              fit: BoxFit.fill,
+              color: Colors.white10,
+              colorBlendMode: BlendMode.modulate,
+            ),
+        ),
+        Container(
           child: CalendarStrip(
             startDate: startDate,
             endDate: endDate,
@@ -119,8 +132,10 @@ class CalendarScreenState extends State<Calendar> {
             markedDates: todayDate,
             containerDecoration: BoxDecoration(color: Color(0xffdfeaf1)),
           )
-        ),
+        )
+        ]
+      )
     );
+    
   }
 }
-

@@ -22,8 +22,8 @@ class EditRecurScreenState extends State<EditRecurrenceScreen>{
   @override
   Widget build(BuildContext context) {
     // This creates the buildOptionsList
+    Size screenSize = MediaQuery.of(context).size;
     return new Scaffold(
-        backgroundColor: Color(0xffdfeaf1),
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 66, 177, 227),
           title: Text ('Recurring Tasks', 
@@ -32,7 +32,21 @@ class EditRecurScreenState extends State<EditRecurrenceScreen>{
               fontWeight: FontWeight.w500,
               color: Colors.white)),
         ),
-        body: _buildRecurTaskList(context),
+        body: Stack(
+        children: <Widget>[
+        Container(
+          child: new Image.asset(
+             'assets/images/background.png',
+              width: screenSize.width,
+              height: screenSize.height,
+              fit: BoxFit.fill,
+              color: Colors.white10,
+              colorBlendMode: BlendMode.modulate,
+            ),
+        ),
+      _buildRecurTaskList(context)
+      ]
+      )
     );
   }
 }

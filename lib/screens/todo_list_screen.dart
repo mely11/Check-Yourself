@@ -27,8 +27,8 @@ class TodoListScreenState extends State<TodoListScreen> {
   @override
   Widget build(BuildContext context){
     // builds all the buttons with their actions as well as the todoList; 
+    Size screenSize = MediaQuery.of(context).size;
     return new Scaffold(
-      backgroundColor: Color(0xffdfeaf1),
       appBar: new AppBar(
         backgroundColor: Color.fromARGB(255, 66, 177, 227),
         title: new Text('Todo List: '+DateOperations().getStringDate(globals.setDate),
@@ -54,7 +54,21 @@ class TodoListScreenState extends State<TodoListScreen> {
           ),
         ],
    ),
-      body: _buildToDoList(context), 
+   body: Stack(
+        children: <Widget>[
+        Container(
+          child: new Image.asset(
+             'assets/images/background.png',
+              width: screenSize.width,
+              height: screenSize.height,
+              fit: BoxFit.fill,
+              color: Colors.white10,
+              colorBlendMode: BlendMode.modulate,
+            ),
+          ),
+        _buildToDoList(context)
+      ]
+      )
     );
   }
 
