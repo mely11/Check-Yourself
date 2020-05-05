@@ -13,6 +13,8 @@
 
 ## How to install
 
+To run this app in ios, you would need to download and install Xcode.
+
 ## How to build
 
 ## How to run 
