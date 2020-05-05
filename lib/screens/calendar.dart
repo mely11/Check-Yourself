@@ -19,7 +19,7 @@ class CalendarScreenState extends State<Calendar> {
   DateTime startDate = DateTime.now().subtract(Duration(days: 30));
   DateTime endDate = DateUtils.getLastDayOfNextMonth();
   DateTime selectedDate = globals.setDate;
-  List<DateTime> todayAndTaskDate = [
+  List<DateTime> todayDate = [
     DateTime.now(),
   ];
 
@@ -42,8 +42,6 @@ class CalendarScreenState extends State<Calendar> {
     this.selectedDate = data;
     Provider.of<TodoModel> (context, listen: false).refreshAll();
     Navigator.of(context).pop();
-    // if (Provider.of<TodoModel> (context, listen: false).todoItems != null)
-    //   todayAndTaskDate.add(selectedDate);
   }
 
   _monthNameWidget(monthName) {
@@ -76,7 +74,7 @@ class CalendarScreenState extends State<Calendar> {
     ];
 
     if (isDateMarked) {	
-      // indicates and marks today
+      // indicates and marks today's date for user reference
       _children.add(getMarkedIndicatorWidget());		
     }
 
@@ -116,7 +114,7 @@ class CalendarScreenState extends State<Calendar> {
             dateTileBuilder: dateTileBuilder,
             iconColor: Colors.black54,
             monthNameWidget: _monthNameWidget,
-            markedDates: todayAndTaskDate,
+            markedDates: todayDate,
             containerDecoration: BoxDecoration(color: Color(0xffdfeaf1)),
           )
         ),
