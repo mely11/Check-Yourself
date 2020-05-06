@@ -9,7 +9,7 @@
 <img src="/assets/screenshots/IMG_2920.PNG" height="620px"/> <img src="/assets/screenshots/IMG_2922.PNG" height="620px"/> <img src="/assets/screenshots/IMG_2925.PNG" height="620px"/>
 
 
-## How to install
+# What to install
 If your operating System is macOS, then you would need to get the Flutter SDK, run flutter doctor command to see if install any dependencies needed to complete the setup, and update the PATH variable for the current session at the command line so that you can run flutter commands in any terminal session.
 
 # Platform setup
@@ -76,14 +76,14 @@ In Android Virtual Device Manager, click Run in the toolbar. The emulator starts
 
 Please refer to https://flutter.dev/docs/get-started/install/macos for a detailed step-by-step walkthrough.
 
-## How to build & run
+# How to build & run
 
 After finishing aforementioned set-up/preparation procedures, you could build this app in iOS by opening the runner file under the iOS folder in this project and click the run button in the Xcode. (Running "flutter run" would also work.) It will automatically run on a simulator once the app is built successfully via Xcode. 
 
 To build this app in Android Virtual Device Manager, click Run in the toolbar. The emulator starts up and displays the default canvas for your selected OS version and device.
 
 
-## References
+# References
 https://flutter.dev/docs/get-started/install/macos
 
 https://flutter.dev/docs/reference/tutorials
