@@ -7,7 +7,7 @@
 <img src="/assets/screenshots/IMG_2912.PNG" height="620px"/> <img src="/assets/screenshots/IMG_2915.PNG" height="620px"/> <img src="/assets/screenshots/IMG_2916.PNG" height="620px"/> 
 <img src="/assets/screenshots/IMG_2917.PNG" height="620px"/> <img src="/assets/screenshots/IMG_2918.PNG" height="620px"/> <img src="/assets/screenshots/IMG_2919.PNG" height="620px"/> 
 <img src="/assets/screenshots/IMG_2920.PNG" height="620px"/> <img src="/assets/screenshots/IMG_2922.PNG" height="620px"/> <img src="/assets/screenshots/IMG_2925.PNG" height="620px"/>
-## How to check out
+
 
 ## How to install
 If your operating System is macOS, then you would need to get the Flutter SDK, run flutter doctor command to see if install any dependencies needed to complete the setup, and update the PATH variable for the current session at the command line so that you can run flutter commands in any terminal session.
