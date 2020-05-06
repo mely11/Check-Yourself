@@ -1,10 +1,10 @@
 # Check Yourself!
   This project is a cross-platform flutter application with minimal features, just enough to be used to check yourself!
 
-<img src="/assets/images/icon-636×670-android.png" height="400px"/> <br>
+<img src="/assets/images/icon-636×670-android.png" height="350px"/> <br>
 
-# Screenshots: Visualizations on a physical iOS device
-<img src="/assets/screenshots/IMG_2912.PNG" height="620px"/> <img src="/assets/screenshots/IMG_2915.PNG" height="620px"/> <img src="/assets/screenshots/IMG_2916.PNG" height="620px"/> 
+# Screenshots: Visualizations On a Physical iOS Device
+<img src="/assets/screenshots/IMG_912.PNG" height="620px"/> <img src="/assets/screenshots/IMG_2915.PNG" height="620px"/> <img src="/assets/screenshots/IMG_2916.PNG" height="620px"/> 
 <img src="/assets/screenshots/IMG_2917.PNG" height="620px"/> <img src="/assets/screenshots/IMG_2918.PNG" height="620px"/> <img src="/assets/screenshots/IMG_2919.PNG" height="620px"/> 
 <img src="/assets/screenshots/IMG_2920.PNG" height="620px"/> <img src="/assets/screenshots/IMG_2922.PNG" height="620px"/> <img src="/assets/screenshots/IMG_2925.PNG" height="620px"/>
 
