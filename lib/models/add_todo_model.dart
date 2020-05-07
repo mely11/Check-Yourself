@@ -49,7 +49,6 @@ class AddTodoModel {
     // process a potential RecurringTask by adding the input task
     // to recurring task lists for specified days
     if (taskBuilder.isRecurring()) {
-      // TODO fix this
       await _addTaskToRecurringTaskListsForSpecifiedDays(context, task);
       SharedPreferencesStorage.getInstance()
           .addTaskToAllRecurringTasksList(context, task);
@@ -61,7 +60,6 @@ class AddTodoModel {
       BuildContext context, Task task) async {
     globals.recurModelInit = true;
     taskBuilder.willRecurOnDay.forEach((day, val) {
-      // TODO fix this
       if (val) {
         SharedPreferencesStorage.getInstance().addTaskToRecurringDay(context, task, day);
       }
