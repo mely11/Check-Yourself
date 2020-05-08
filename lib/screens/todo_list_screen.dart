@@ -54,21 +54,21 @@ class TodoListScreenState extends State<TodoListScreen> {
           ),
         ],
    ),
-   body: Stack(
-        children: <Widget>[
-        Container(
-          child: new Image.asset(
-             'assets/images/background.png',
-              width: screenSize.width,
-              height: screenSize.height,
-              fit: BoxFit.fill,
-              color: Colors.white10,
-              colorBlendMode: BlendMode.modulate,
-            ),
-          ),
-        _buildToDoList(context)
-      ]
-      )
+       body: Stack(
+            children: <Widget>[
+            Container(
+              child: new Image.asset(
+                 'assets/images/background.png',
+                  width: screenSize.width,
+                  height: screenSize.height,
+                  fit: BoxFit.fill,
+                  color: Colors.white10,
+                  colorBlendMode: BlendMode.modulate,
+                ),
+              ),
+            _buildToDoList(context)
+          ]
+       )
     );
   }
 
