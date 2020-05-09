@@ -85,16 +85,11 @@ class RecurListModel extends ChangeNotifier {
     for (var key in keys){
       tasks = prefs.getStringList(key);
       if (tasks != null) {
-        print('here are the tasks before');
-        print(tasks);
         tasks.remove(task);
-        print('here are the tasks after');
-        print(tasks);
         prefs.setStringList(key, tasks);
         tasks.clear();
       }
     }
-    print ('all recurrences deleted');
   }
 
   void refreshAll(){

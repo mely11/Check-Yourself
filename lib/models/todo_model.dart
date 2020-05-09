@@ -103,27 +103,20 @@ class TodoModel extends ChangeNotifier {
     List<String> weekDayRecur;
     await _loadDailyRecurrences().then((data) {
       weekDayRecur = data;
-      print(weekDayRecur);
     });
     if (weekDayRecur == null){
-      print ('I guess its null now!');
       if (dailyRecur == null){
         return [];
       }
       else{
-        print ('just daily');
         return dailyRecur;}
     }
     else{
-      print ('weekDay not null');
       List<String> totalRecur = [];
       if (dailyRecur != null){
         totalRecur.addAll(dailyRecur);
-        print (totalRecur);
       }
       totalRecur.addAll(weekDayRecur);
-      print ('the total recur:');
-      print (totalRecur);
       return totalRecur;
     }
   }

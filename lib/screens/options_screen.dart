@@ -107,7 +107,6 @@ class OptionsScreenState extends State<OptionsScreen>{
     // This method deletes the pressed task
     final prefs = await SharedPreferences.getInstance();
     prefs.clear();
-    print ('data deleted');
     globals.setDate = DateTime.now();
     Provider.of<TodoModel> (context, listen: false).refreshAll();
     Provider.of<RecurListModel> (context, listen:false).refreshAll();
