@@ -90,3 +90,5 @@ https://flutter.dev/docs/reference/tutorials
 
 https://pub.dev/packages/calendar_strip
 
+https://medium.com/the-web-tub/making-a-todo-app-with-flutter-5c63dab88190
+
